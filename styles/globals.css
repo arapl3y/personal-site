@@ -6,18 +6,18 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #e3e2e2;
-  color: #202020;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
+  font-family: monospace;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-* {
-  box-sizing: border-box;
+#__next {
+  height: 100vh;
+  width: 100vw;
 }

@@ -8,11 +8,6 @@ module.exports = {
       center: true,
       padding: "2rem",
     },
-    extend: {
-      colors: {
-        ffPink: "#f05969",
-      },
-    },
   },
   plugins: [],
 };
