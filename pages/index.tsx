@@ -1,141 +1,222 @@
-import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import type { NextPage } from "next";
-import gsap from "gsap";
-import SplitType from "split-type";
-
-const links = [
-  {
-    href: "//github.com/arapl3y",
-    text: "Github ↗",
-  },
-  {
-    href: "//www.linkedin.com/in/alex-rapley-7a00b159/",
-    text: "LinkedIn ↗",
-  },
-  {
-    href: "mailto:rapley3@gmail.com",
-    text: "Email ↗",
-  },
-];
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
+import Nav from "../components/Nav";
+import Preload from "../components/Preload";
+import Contact from "../components/Contact";
+import { anim } from "../utils/animation";
 
 const Home: NextPage = () => {
-  const [splitText, setSplitText] = useState<SplitType>();
-  const linksRef = useRef<HTMLAnchorElement[]>([]);
+  const showPreload = useRef<boolean>(true);
+  const titleControls = useAnimation();
+  const containerControls = useAnimation();
+  const navTitleControls = useAnimation();
 
-  // Title animation
-  useEffect(() => {
-    const splitTitle = new SplitType(".title", {
-      types: "chars",
-    });
-
-    gsap.to(splitTitle.chars, {
-      yPercent: -100,
-      duration: 0.8,
-      ease: "power4.inOut",
-      stagger: { each: 0.02 },
-      onComplete() {
-        gsap.set(splitTitle.chars, {
-          yPercent: 0,
-        });
+  const title = {
+    initial: {
+      y: 0,
+      display: "block",
+    },
+    enter: {
+      filter: "invert(1)",
+      transition: {
+        delay: 0.4,
+        duration: 0,
       },
-    });
-
-    return () => {
-      splitTitle.revert();
-    };
-  }, []);
-
-  // Split text for link animation
-  useEffect(() => {
-    const splitLinks = new SplitType(".menu-link", {
-      types: "chars",
-    });
-
-    setSplitText(splitLinks);
-
-    return () => {
-      splitLinks.revert();
-    };
-  }, []);
-
-  // Resize
-  useEffect(() => {
-    function handleResize() {
-      if (!splitText) return;
-
-      splitText.revert();
-
-      const splitLinks = new SplitType(".menu-link", {
-        types: "chars,words",
-      });
-
-      setSplitText(splitLinks);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
-
-  // Handlers for animation
-  const handleMouseEnter = (index: number) => {
-    const chars = linksRef.current[index].querySelectorAll(".char");
-
-    gsap.to(chars, {
-      yPercent: -80,
-      duration: 0.5,
-      ease: "power4.inOut",
-      stagger: { each: 0.01 },
-      overwrite: true,
-    });
+    },
+    exit: {
+      y: 100,
+      transition: {
+        duration: 0.7,
+        ease: [0.83, 0, 0.17, 1],
+        delay: 0.8,
+      },
+      transitionEnd: {
+        display: "none",
+      },
+    },
   };
 
-  const handleMouseLeave = (index: number) => {
-    const chars = linksRef.current[index].querySelectorAll(".char");
-
-    gsap.to(chars, {
-      yPercent: 0,
-      duration: 0.4,
-      ease: "power4.inOut",
-      stagger: { each: 0.01 },
-    });
+  const container = {
+    initial: {
+      y: "-100%",
+    },
+    enter: {
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.85, 0, 0.15, 1],
+      },
+    },
+    exit: {
+      y: "-100%",
+      transition: {
+        ease: [0.85, 0, 0.15, 1],
+        duration: 0.8,
+      },
+    },
   };
+
+  const navTitle = {
+    initial: {
+      y: "100%",
+    },
+    enter: {
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.83, 0, 0.17, 1],
+        delay: 0.2,
+      },
+    },
+    exit: {},
+  };
+
+  const content = {
+    initial: {
+      y: 100,
+      opacity: 0,
+    },
+    enter: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 1.7,
+        duration: 0.8,
+        ease: [0.83, 0, 0.17, 1],
+      },
+    },
+    exit: {},
+  };
+
+  useEffect(() => {
+    const animSequence = async () => {
+      await titleControls.start("initial");
+      await containerControls.start("initial");
+      await navTitleControls.start("initial");
+
+      containerControls.start("enter");
+      titleControls.start("enter");
+
+      await titleControls.start("exit");
+      containerControls.start("exit");
+
+      await navTitleControls.start("enter");
+
+      showPreload.current = false;
+    };
+
+    // Only want to show the preload animation on first load
+    showPreload.current && animSequence();
+  }, [containerControls, navTitleControls, titleControls]);
 
   return (
-    <div className="container h-screen flex justify-center items-center">
+    <>
       <Head>
-        <title>🚧 🚧 🚧</title>
+        <title>Alex Rapley</title>
         <meta name="description" content="Alex Rapley's personal site" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="title text-3xl md:text-6xl xl:text-8xl font-bold uppercase overflow-hidden whitespace-nowrap">
-            Under construction
-          </h1>
+      <Nav variants={navTitle} controls={navTitleControls} />
 
-          <ul className="mt-20 flex gap-8 font-body uppercase text-md md:text-2xl font-bold overflow-hidden">
-            {links.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  className="menu-link stagger-link"
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={() => handleMouseLeave(index)}
-                  ref={(el) => el && linksRef.current?.push(el)}
-                >
-                  <span className="menu-link-text">{link.text}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </main>
-    </div>
+      <Preload
+        titleVariants={title}
+        titleControls={titleControls}
+        containerVariants={container}
+        containerControls={containerControls}
+      />
+
+      <motion.div {...anim(content)} className="container px-2">
+        <section className=" my-32 flex flex-col gap-4 text-3xl">
+          <p>
+            Lead Product Engineer at{" "}
+            <a href="https://futurefriendly.team">Future Friendly</a>.
+          </p>
+          <div className="ml-8 flex flex-col gap-4">
+            <p>— Full-stack development</p>
+            <p>— Creative coding</p>
+            <p>— Interaction design</p>
+          </div>
+          <p>Based on Gadigal land, Australia</p>
+        </section>
+
+        <section className="my-32 px-2">
+          <h1 className="text-6xl font-bold uppercase italic">Select work</h1>
+
+          <div className="mt-12 grid grid-cols-2 gap-x-20 gap-y-20">
+            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
+            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
+            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
+            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
+          </div>
+        </section>
+
+        <section className="my-32 px-2">
+          <h1 className="text-6xl font-bold uppercase italic">Other work</h1>
+
+          <div className="mt-12 grid grid-cols-1 divide-y divide-black">
+            <div className="py-4">
+              <p>
+                Project 1 — 2022 — A tourism companion experience for finding
+                the best places to visit in Australia.
+              </p>
+            </div>
+            <div className="py-4">
+              <p>
+                Project 1 — 2022 — A tourism companion experience for finding
+                the best places to visit in Australia.
+              </p>
+            </div>
+            <div className="py-4">
+              <p>
+                Project 1 — 2022 — A tourism companion experience for finding
+                the best places to visit in Australia.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="my-32 px-2">
+          <h1 className="text-6xl font-bold uppercase italic">Awards</h1>
+
+          <div className="mt-12 grid grid-cols-1 divide-y divide-black">
+            <div className="py-4">
+              <p>Good Design Award 2022</p>
+            </div>
+            <div className="py-4">
+              <p>Good Design Award 2022</p>
+            </div>
+            <div className="py-4">
+              <p>Good Design Award 2022</p>
+            </div>
+            <div className="py-4">
+              <p>GovHack winner 2019</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="my-32 px-2">
+          <h1 className="text-6xl font-bold uppercase italic">Talks</h1>
+
+          <div className="mt-12 grid grid-cols-1 divide-y divide-black">
+            <div className="py-4">
+              <p>Make art with code</p>
+            </div>
+            <div className="py-4">
+              <p>Roadmapping 101</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="my-32 px-2">
+          <h1 className="text-6xl font-bold uppercase italic">Get in touch</h1>
+
+          <Contact />
+        </section>
+      </motion.div>
+    </>
   );
 };
 

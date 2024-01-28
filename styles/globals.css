@@ -2,30 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  position: fixed;
-  padding: 0;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
+@layer base {
+    html,
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        @apply font-display;
+    }
 
-#__next {
-  height: 100%;
-  width: 100%;
-}
+    p,
+    span,
+    a,
+    li {
+        @apply font-body;
+    }
 
-a.menu-link span.menu-link-text {
-  text-shadow: 0px 1.1em 0px black;
-  font-kerning: none;
-}
-
-h1.title {
-  text-shadow: 0px 1em 0px black;
-  font-kerning: none;
+    span.menu-link-text {
+        text-shadow: 0px 1.2em 0px black;
+    }
 }

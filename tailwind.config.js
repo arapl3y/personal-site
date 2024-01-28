@@ -8,6 +8,10 @@ module.exports = {
       center: true,
       padding: "2rem",
     },
+    fontFamily: {
+      body: ['"Open Sans"', "-apple-system", "sans-serif"],
+      display: ['"IBM Plex Sans"', "-apple-system", "sans-serif"],
+    },
   },
   plugins: [],
 };
