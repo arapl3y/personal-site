@@ -1,10 +1,14 @@
 import { isValidSignature, SIGNATURE_HEADER_NAME } from "@sanity/webhook";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const REVALIDATION_TOKEN = process.env.REVALIDATION_TOKEN ?? "";
 
-export default async function handler(req: any, res: any) {
-  const signature = req.headers[SIGNATURE_HEADER_NAME];
-  const isValid = isValidSignature(
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const signature = req.headers[SIGNATURE_HEADER_NAME] as string;
+  const isValid = await isValidSignature(
     JSON.stringify(req.body),
     signature,
     REVALIDATION_TOKEN,
