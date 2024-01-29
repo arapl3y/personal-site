@@ -18,7 +18,8 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const pathToRevalidate = req.body.slug.current || "/";
+    // Only revalidate root route for now
+    const pathToRevalidate = "/";
 
     console.log(`===== Revalidating: ${pathToRevalidate}`);
 
