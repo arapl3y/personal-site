@@ -9,7 +9,7 @@ export default function Nav({
   controls: AnimationControls;
 }) {
   return (
-    <motion.nav className="container overflow-hidden p-2 ">
+    <motion.nav className="container overflow-hidden px-2 py-8">
       <motion.div
         {...anim(variants)}
         animate={controls}
@@ -22,9 +22,12 @@ export default function Nav({
         </div>
 
         <ul className="font-body flex items-center gap-8 text-lg uppercase">
+          {/* TODO: Clicking work TBD, scroll to top? */}
           <li>Work</li>
-          <li>Info</li>
+          {/* TODO: Clicking Contact opens up a little section with contact details */}
           <li>Contact</li>
+          {/* TODO: Color mode toggle */}
+          <li>Dark</li>
         </ul>
       </motion.div>
     </motion.nav>

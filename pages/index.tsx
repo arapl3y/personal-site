@@ -1,13 +1,22 @@
 import Head from "next/head";
-import type { NextPage } from "next";
+import type { NextPage, InferGetStaticPropsType } from "next";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef } from "react";
-import Nav from "../components/Nav";
-import Preload from "../components/Preload";
-import Contact from "../components/Contact";
-import { anim } from "../utils/animation";
+import Nav from "@/components/Nav";
+import Preload from "@/components/Preload";
+// import Contact from "@/components/Contact";
+import { anim } from "@/utils/animation";
+import SelectWork from "@/components/SelectWork";
+import OtherWork from "@/components/OtherWork";
+import Awards from "@/components/Awards";
+import Talks from "@/components/Talks";
+import { getOtherProjects, getSelectProjects } from "@/sanity/projects";
+import Info from "@/components/Info";
 
-const Home: NextPage = () => {
+const Home: NextPage<{
+  projects: InferGetStaticPropsType<typeof getStaticProps>;
+  otherProjects: InferGetStaticPropsType<typeof getStaticProps>;
+}> = ({ projects, otherProjects }) => {
   const showPreload = useRef<boolean>(true);
   const titleControls = useAnimation();
   const containerControls = useAnimation();
@@ -60,7 +69,7 @@ const Home: NextPage = () => {
 
   const navTitle = {
     initial: {
-      y: "100%",
+      y: 200,
     },
     enter: {
       y: 0,
@@ -129,95 +138,38 @@ const Home: NextPage = () => {
       />
 
       <motion.div {...anim(content)} className="container px-2">
-        <section className=" my-32 flex flex-col gap-4 text-3xl">
-          <p>
-            Lead Product Engineer at{" "}
-            <a href="https://futurefriendly.team">Future Friendly</a>.
-          </p>
-          <div className="ml-8 flex flex-col gap-4">
-            <p>— Full-stack development</p>
-            <p>— Creative coding</p>
-            <p>— Interaction design</p>
-          </div>
-          <p>Based on Gadigal land, Australia</p>
-        </section>
+        <Info />
 
-        <section className="my-32 px-2">
-          <h1 className="text-6xl font-bold uppercase italic">Select work</h1>
+        <SelectWork projects={projects} />
+        <OtherWork projects={otherProjects} />
 
-          <div className="mt-12 grid grid-cols-2 gap-x-20 gap-y-20">
-            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
-            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
-            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
-            <div className="aspect-[9/10] w-full rounded-xl bg-gray-200"></div>
-          </div>
-        </section>
+        <Awards />
 
-        <section className="my-32 px-2">
-          <h1 className="text-6xl font-bold uppercase italic">Other work</h1>
-
-          <div className="mt-12 grid grid-cols-1 divide-y divide-black">
-            <div className="py-4">
-              <p>
-                Project 1 — 2022 — A tourism companion experience for finding
-                the best places to visit in Australia.
-              </p>
-            </div>
-            <div className="py-4">
-              <p>
-                Project 1 — 2022 — A tourism companion experience for finding
-                the best places to visit in Australia.
-              </p>
-            </div>
-            <div className="py-4">
-              <p>
-                Project 1 — 2022 — A tourism companion experience for finding
-                the best places to visit in Australia.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="my-32 px-2">
-          <h1 className="text-6xl font-bold uppercase italic">Awards</h1>
-
-          <div className="mt-12 grid grid-cols-1 divide-y divide-black">
-            <div className="py-4">
-              <p>Good Design Award 2022</p>
-            </div>
-            <div className="py-4">
-              <p>Good Design Award 2022</p>
-            </div>
-            <div className="py-4">
-              <p>Good Design Award 2022</p>
-            </div>
-            <div className="py-4">
-              <p>GovHack winner 2019</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="my-32 px-2">
-          <h1 className="text-6xl font-bold uppercase italic">Talks</h1>
-
-          <div className="mt-12 grid grid-cols-1 divide-y divide-black">
-            <div className="py-4">
-              <p>Make art with code</p>
-            </div>
-            <div className="py-4">
-              <p>Roadmapping 101</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="my-32 px-2">
-          <h1 className="text-6xl font-bold uppercase italic">Get in touch</h1>
-
-          <Contact />
-        </section>
+        <Talks />
       </motion.div>
     </>
   );
 };
+
+export const getStaticProps = async () => {
+  const projects = await getSelectProjects();
+  const otherProjects = await getOtherProjects();
+
+  return {
+    props: {
+      projects,
+      otherProjects,
+    },
+  };
+};
+
+// export const getStaticPaths = async () => {
+//   const paths = await getProjectPaths();
+
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// };
 
 export default Home;
