@@ -12,10 +12,11 @@ import Awards from "@/components/Awards";
 import Talks from "@/components/Talks";
 import { getOtherProjects, getSelectProjects } from "@/sanity/projects";
 import Info from "@/components/Info";
+import { Project } from "@/types/project";
 
 const Home: NextPage<{
-  projects: InferGetStaticPropsType<typeof getStaticProps>;
-  otherProjects: InferGetStaticPropsType<typeof getStaticProps>;
+  projects: Project[];
+  otherProjects: Project[];
 }> = ({ projects, otherProjects }) => {
   const showPreload = useRef<boolean>(true);
   const titleControls = useAnimation();
