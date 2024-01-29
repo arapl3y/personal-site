@@ -11,6 +11,9 @@ dependencies:
   '@sanity/orderable-document-list':
     specifier: ^1.2.0
     version: 1.2.0(@sanity/ui@2.0.1)(@types/react-dom@18.0.5)(@types/react@18.2.48)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react@18.2.0)(rxjs@7.8.1)(sanity@3.26.1)(styled-components@6.1.8)
+  '@sanity/webhook':
+    specifier: ^4.0.1
+    version: 4.0.1
   '@studio-freight/lenis':
     specifier: ^1.0.34
     version: 1.0.34

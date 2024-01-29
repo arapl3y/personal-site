@@ -11,6 +11,7 @@
   "dependencies": {
     "@sanity/image-url": "^1.0.2",
     "@sanity/orderable-document-list": "^1.2.0",
+    "@sanity/webhook": "^4.0.1",
     "@studio-freight/lenis": "^1.0.34",
     "framer-motion": "^11.0.3",
     "next": "14.1.0",
