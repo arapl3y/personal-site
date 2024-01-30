@@ -64,20 +64,20 @@ export async function getOtherProjects() {
   return await client.fetch<Project[]>(query);
 }
 
-// export async function getProjectPaths() {
-//   const query = `
-//     *[_type == "project"]{
-//       "slug": slug.current
-//     }
-//   `;
+export async function getProjectPaths() {
+  const query = `
+    *[_type == "project" && highlight == true]{
+      "slug": slug.current
+    }
+  `;
 
-//   const projects = await client.fetch<Project[]>(query);
+  const projects = await client.fetch<Project[]>(query);
 
-//   return projects.map((project) => {
-//     return {
-//       params: {
-//         slug: project.slug,
-//       },
-//     };
-//   });
-// }
+  return projects.map((project) => {
+    return {
+      params: {
+        slug: project.slug,
+      },
+    };
+  });
+}

@@ -13,14 +13,16 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
         Other work <sup>{projects.length}</sup>
       </h1>
 
-      <div className="mt-12 grid grid-cols-1 divide-y divide-black text-lg">
+      <div className="mt-12 grid grid-cols-1 divide-y divide-black text-lg dark:divide-white">
         {projects.map((project) => (
           <div
-            className="flex items-center justify-between gap-8 py-4"
+            className="flex items-start justify-between gap-8 py-4 text-sm md:items-center md:text-lg"
             key={project._id}
           >
             <span className="w-1/4">{project.name}</span>
-            <span className="flex-1 text-sm">{project.description}</span>
+            <span className="flex-1 text-sm md:text-base">
+              {project.description}
+            </span>
             <span className="1/4">{project.year}</span>
           </div>
         ))}

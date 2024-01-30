@@ -12,7 +12,7 @@ const Awards = () => {
         Awards <sup>5</sup>
       </h1>
 
-      <div className="mt-12 grid grid-cols-1 divide-y divide-black">
+      <div className="mt-12 grid grid-cols-1 divide-y divide-black dark:divide-white">
         <div className="py-4">
           <p>Good Design Award 2022</p>
         </div>

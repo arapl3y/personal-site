@@ -1,19 +1,12 @@
-import { AnimationControls, motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
-import { anim } from "../utils/animation";
+import { anim, containerVariants, loaderVariants } from "@/utils/animation";
+import { useBoundStore } from "@/store";
 
-export default function Preload({
-  containerVariants,
-  containerControls,
-  titleVariants,
-  titleControls,
-}: {
-  containerVariants: Variants;
-  containerControls: AnimationControls;
-  titleVariants: Variants;
-  titleControls: AnimationControls;
-}) {
+export default function Preload() {
   const titleContainerRef = useRef<HTMLDivElement | null>(null);
+  const loaderControls = useBoundStore((state) => state.loaderControls);
+  const containerControls = useBoundStore((state) => state.containerControls);
 
   function handleAnimationComplete(definition: string) {
     // Hide title container once animation is complete
@@ -30,23 +23,24 @@ export default function Preload({
       <motion.div
         {...anim(containerVariants)}
         animate={containerControls}
-        className="z-1 fixed inset-0 h-screen w-screen bg-black"
+        className="fixed inset-0 z-10 h-screen w-screen bg-black dark:bg-[#343434]"
         onAnimationComplete={(definition: string) =>
           handleAnimationComplete(definition)
         }
       />
 
+      {/* Text container */}
       <div
         ref={titleContainerRef}
-        className="z-2 absolute left-1/2 top-1/2 flex h-screen w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center text-center"
+        className="absolute left-1/2 top-1/2 z-20 flex h-screen w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center text-center"
       >
         <div className="overflow-hidden">
           <motion.h1
-            {...anim(titleVariants)}
-            animate={titleControls}
-            className="relative z-10 px-4 text-8xl font-bold uppercase italic text-black"
+            {...anim(loaderVariants)}
+            animate={loaderControls}
+            className="relative z-10 px-4 text-8xl font-bold uppercase italic text-black dark:text-white"
           >
-            RAPLEY
+            Rapley
           </motion.h1>
         </div>
       </div>
