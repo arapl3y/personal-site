@@ -38,7 +38,7 @@ export default function Preload() {
           <motion.h1
             {...anim(loaderVariants)}
             animate={loaderControls}
-            className="relative z-10 px-4 text-8xl font-bold uppercase italic text-black dark:text-white"
+            className="relative z-10 px-4 text-6xl font-bold uppercase italic text-black dark:text-white"
           >
             Rapley
           </motion.h1>
