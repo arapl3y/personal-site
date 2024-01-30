@@ -22,5 +22,5 @@ module.exports = {
       mono: ["IBM Plex Mono"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

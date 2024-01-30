@@ -7,7 +7,7 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
-      className="my-32 px-2"
+      className="my-32"
     >
       <h1 className="text-6xl font-bold uppercase italic">
         Other work <sup>{projects.length}</sup>
@@ -19,7 +19,19 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
             className="flex items-start justify-between gap-8 py-4 text-sm md:items-center md:text-lg"
             key={project._id}
           >
-            <span className="w-1/4">{project.name}</span>
+            {project.url ? (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-1/4 underline"
+              >
+                {project.name}
+              </a>
+            ) : (
+              <span className="w-1/4">{project.name}</span>
+            )}
+
             <span className="flex-1 text-sm md:text-base">
               {project.description}
             </span>

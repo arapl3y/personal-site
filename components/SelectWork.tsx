@@ -1,12 +1,10 @@
 import { Project } from "@/types/project";
-import { motion } from "framer-motion";
-import Link from "next/link";
-
-const MotionLink = motion(Link);
+import MotionLink from "@/components/MotionLink";
+import Image from "next/image";
 
 const SelectWork = ({ projects }: { projects: Project[] }) => {
   return (
-    <section className="my-32 px-2">
+    <section className="my-32">
       <h1 className="text-6xl font-bold uppercase italic">
         Select work <sup>{projects.length}</sup>
       </h1>
@@ -27,11 +25,16 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
             //   backgroundSize: "110%",
             //   transition: { duration: 0.3, ease: [0.83, 0, 0.17, 1] },
             // }}
-            className={`relative block aspect-square w-full rounded-2xl bg-cover bg-center bg-no-repeat  ${index % 3 === 0 ? "md:col-span-2 md:aspect-[18/9]" : ""}`}
-            style={{
-              backgroundImage: `url(${project.image})`,
-            }}
+            className={`relative aspect-square ${index % 3 === 0 ? "md:col-span-2 md:aspect-[18/9]" : ""}`}
           >
+            <Image
+              src={project.image}
+              fill
+              alt=""
+              className="rounded-2xl"
+              style={{ objectFit: "cover" }}
+            />
+
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-transparent to-black/50"></div>
 
             <div className="flex w-full justify-between">
@@ -44,7 +47,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
                   {project.sectors.map((sector, index) => (
                     <li
                       key={index}
-                      className="rounded-full border bg-white px-4 py-1 "
+                      className="rounded-full border bg-white px-4 py-1"
                     >
                       {sector}
                     </li>

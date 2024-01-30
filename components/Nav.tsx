@@ -9,7 +9,7 @@ export default function Nav() {
   const navControls = useBoundStore((state) => state.navControls);
 
   return (
-    <motion.nav className="container overflow-hidden px-2 py-8">
+    <motion.nav className="container overflow-hidden py-8">
       <motion.div
         {...anim(navVariants)}
         animate={navControls}

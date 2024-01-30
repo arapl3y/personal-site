@@ -6,7 +6,7 @@ const Awards = () => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
-      className="my-32 px-2"
+      className="my-32"
     >
       <h1 className="text-6xl font-bold uppercase italic">
         Awards <sup>5</sup>

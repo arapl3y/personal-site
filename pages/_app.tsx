@@ -8,12 +8,12 @@ import Nav from "@/components/Nav";
 function App({ Component, pageProps, router }: AppProps) {
   return (
     <ThemeProvider attribute="class">
-      <AnimatePresence mode="wait">
-        <Layout>
-          <Nav />
+      <Layout>
+        <Nav />
+        <AnimatePresence mode="wait">
           <Component {...pageProps} key={router.route} />
-        </Layout>
-      </AnimatePresence>
+        </AnimatePresence>
+      </Layout>
     </ThemeProvider>
   );
 }

@@ -18,7 +18,7 @@ export default function Contact() {
   ];
 
   return (
-    <footer className="container px-2">
+    <footer className="container">
       <ul className="flex justify-end gap-4 overflow-hidden text-lg font-bold uppercase italic">
         {links.map((link) => (
           <SocialLink link={link} key={link.href} />

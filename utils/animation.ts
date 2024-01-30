@@ -82,5 +82,12 @@ export const contentVariants = {
       ease: [0.83, 0, 0.17, 1],
     },
   },
-  exit: {},
+  exit: {
+    y: 100,
+    opacity: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.83, 0, 0.17, 1],
+    },
+  },
 };
