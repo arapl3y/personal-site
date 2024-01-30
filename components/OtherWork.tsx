@@ -7,16 +7,16 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
-      className="my-32"
+      className="my-24"
     >
-      <h1 className="text-6xl font-bold uppercase italic">
+      <h1 className="text-4xl font-bold uppercase italic">
         Other work <sup>{projects.length}</sup>
       </h1>
 
-      <div className="mt-12 grid grid-cols-1 divide-y divide-black text-lg dark:divide-white">
+      <div className="mt-8 grid grid-cols-1 divide-y divide-black dark:divide-white">
         {projects.map((project) => (
           <div
-            className="flex items-start justify-between gap-8 py-4 text-sm md:items-center md:text-lg"
+            className="flex items-start justify-between gap-8 py-4 md:items-center"
             key={project._id}
           >
             {project.url ? (
@@ -24,18 +24,16 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/4 underline"
+                className="w-1/4 text-sm  underline"
               >
                 {project.name}
               </a>
             ) : (
-              <span className="w-1/4">{project.name}</span>
+              <span className="w-1/4 text-sm">{project.name}</span>
             )}
 
-            <span className="flex-1 text-sm md:text-base">
-              {project.description}
-            </span>
-            <span className="1/4">{project.year}</span>
+            <span className="flex-1 text-xs">{project.description}</span>
+            <span className="text-sm">{project.year}</span>
           </div>
         ))}
       </div>

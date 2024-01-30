@@ -10,6 +10,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
+import { useRouter } from "next/router";
 
 const Project = ({ project }: { project: Project }) => {
   const contentControls = useBoundStore((state) => state.contentControls);
@@ -18,10 +19,18 @@ const Project = ({ project }: { project: Project }) => {
   // Use controls when part of intiial load sequence, otherwise just use variants
   const animateProps = !hasPreloaded ? { animate: contentControls } : {};
 
+  const router = useRouter();
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return null;
+  }
+
   return (
     <>
       <Head>
-        <title>{`${project.name} | Alex Rapley`}</title>
+        <title>{`${project?.name} | Alex Rapley`}</title>
         <meta
           name="description"
           content="Netflix Grow Creative Discovery Hub is a project that Alex Rapley worked on while at Future Friendly design studio."
@@ -34,22 +43,20 @@ const Project = ({ project }: { project: Project }) => {
         {...animateProps}
         className="container my-20"
       >
-        <Link href="/" className="text-2xl">
-          ← Back
-        </Link>
+        <Link href="/">← Back</Link>
 
-        <h1 className="mt-8 text-7xl font-bold uppercase italic text-black dark:text-white ">
+        <h1 className="mt-8 text-4xl font-bold uppercase italic text-black dark:text-white ">
           {project?.name}
         </h1>
 
-        {project.url && (
+        {project?.url && (
           <a
-            href={project.url}
-            className="mt-4 block text-xl underline"
+            href={project?.url}
+            className="mt-4 block underline"
             target="_blank"
             rel="noreferrer noopener"
           >
-            {project.url} ↗
+            {project?.url}
           </a>
         )}
 
@@ -64,12 +71,12 @@ const Project = ({ project }: { project: Project }) => {
 
         <div className="mt-8 flex flex-wrap gap-2">
           {project.technologies?.map((tech) => (
-            <Chip key={`${project.name}-${tech}`}>{tech}</Chip>
+            <Chip key={`${project?.name}-${tech}`}>{tech}</Chip>
           ))}
         </div>
 
-        <div className="prose my-10 max-w-4xl text-lg text-black dark:text-white">
-          <PortableText value={project.content} />
+        <div className="prose my-10 max-w-2xl text-black dark:text-white">
+          <PortableText value={project?.content} />
         </div>
 
         <div className="relative mt-8 aspect-video w-full rounded-2xl">
@@ -94,6 +101,12 @@ interface Params extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as Params;
   const project = await getProject(slug);
+
+  if (!project) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

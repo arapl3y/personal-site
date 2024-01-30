@@ -4,12 +4,12 @@ import Image from "next/image";
 
 const SelectWork = ({ projects }: { projects: Project[] }) => {
   return (
-    <section className="my-32">
-      <h1 className="text-6xl font-bold uppercase italic">
+    <section className="my-24">
+      <h1 className="text-4xl font-bold uppercase italic">
         Select work <sup>{projects.length}</sup>
       </h1>
 
-      <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-20">
+      <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2">
         {projects.map((project, index) => (
           <MotionLink
             href={`/projects/${project.slug}`}
@@ -39,7 +39,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
 
             <div className="flex w-full justify-between">
               <div className="absolute bottom-5 left-5 ">
-                <h1 className="text-4xl font-bold uppercase italic text-white">
+                <h1 className="text-2xl font-bold uppercase italic text-white">
                   {project.name}
                 </h1>
 
@@ -47,7 +47,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
                   {project.sectors.map((sector, index) => (
                     <li
                       key={index}
-                      className="rounded-full border bg-white px-4 py-1"
+                      className="rounded-full border bg-white px-4 py-1 text-sm"
                     >
                       {sector}
                     </li>
@@ -55,7 +55,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
                 </ul>
               </div>
 
-              <h1 className="absolute bottom-5 right-5 font-mono text-4xl font-bold uppercase italic text-white">
+              <h1 className="absolute bottom-5 right-5 font-mono text-2xl font-bold uppercase italic text-white">
                 {project.year}
               </h1>
             </div>
