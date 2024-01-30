@@ -8,6 +8,8 @@ interface AnimationControlsSlice {
   navControls: AnimationControls | undefined;
   contentControls: AnimationControls | undefined;
   containerControls: AnimationControls | undefined;
+  hasPreloaded: boolean;
+  setHasPreloaded: (value: boolean) => void;
   setLoaderControls: (controls: AnimationControls) => void;
   setContainerControls: (controls: AnimationControls) => void;
   setNavControls: (controls: AnimationControls) => void;
@@ -21,6 +23,8 @@ export const createAnimationControlsSlice: StateCreator<
   navControls: undefined,
   contentControls: undefined,
   containerControls: undefined,
+  hasPreloaded: false,
+  setHasPreloaded: (value: boolean) => set({ hasPreloaded: value }),
   setLoaderControls: (controls: AnimationControls) =>
     set({ loaderControls: controls }),
   setNavControls: (controls: AnimationControls) =>

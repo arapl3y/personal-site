@@ -1,6 +1,6 @@
 import Head from "next/head";
 import type { NextPage } from "next";
-import { motion } from "framer-motion";
+import { addScaleCorrector, motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import SelectWork from "@/components/SelectWork";
 import OtherWork from "@/components/OtherWork";
@@ -16,6 +16,10 @@ const Home: NextPage<{
   otherProjects: Project[];
 }> = ({ projects, otherProjects }) => {
   const contentControls = useBoundStore((state) => state.contentControls);
+  const hasPreloaded = useBoundStore((state) => state.hasPreloaded);
+
+  // Use controls when part of intiial load sequence, otherwise just use variants
+  const animateProps = !hasPreloaded ? { animate: contentControls } : {};
 
   return (
     <>
@@ -27,7 +31,7 @@ const Home: NextPage<{
 
       <motion.div
         {...anim(contentVariants)}
-        animate={contentControls}
+        {...animateProps}
         className="container px-2"
       >
         <Info />

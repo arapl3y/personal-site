@@ -18,13 +18,14 @@ export default function Layout({ children }: { children: ReactNode }) {
   );
   const setNavControls = useBoundStore((state) => state.setNavControls);
   const setContentControls = useBoundStore((state) => state.setContentControls);
+  const setHasPreloaded = useBoundStore((state) => state.setHasPreloaded);
 
   setLoaderControls(loaderControls);
   setContainerControls(containerControls);
   setNavControls(navControls);
   setContentControls(contentControls);
 
-  // Animation sequence
+  // First load animation sequence
   useEffect(() => {
     const loaderSequence = async () => {
       await loaderControls.start("initial");
@@ -40,6 +41,8 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       navControls.start("enter");
       contentControls.start("enter");
+
+      setHasPreloaded(true);
     };
 
     loaderSequence();
@@ -52,6 +55,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     setContainerControls,
     setNavControls,
     setContentControls,
+    setHasPreloaded,
   ]);
 
   // Smooth scroll

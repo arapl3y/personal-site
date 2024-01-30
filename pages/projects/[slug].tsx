@@ -4,7 +4,7 @@ import { Project } from "@/types/project";
 import { ParsedUrlQuery } from "querystring";
 
 const Project = ({ project }: { project: Project }) => {
-  return <div>{project.name}</div>;
+  return <div>{project?.name}</div>;
 };
 
 interface Params extends ParsedUrlQuery {
