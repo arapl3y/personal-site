@@ -7,13 +7,13 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
-      className="my-24"
+      className="text-off-black dark:text-off-white my-24"
     >
       <h1 className="text-4xl font-bold uppercase italic">
         Other work <sup>{projects.length}</sup>
       </h1>
 
-      <div className="mt-8 grid grid-cols-1 divide-y divide-black dark:divide-white">
+      <div className="divide-off-black dark:divide-off-white mt-8 grid grid-cols-1 divide-y">
         {projects.map((project) => (
           <div
             className="flex items-start justify-between gap-8 py-4 md:items-center"
@@ -24,15 +24,17 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/4 text-sm  underline"
+                className="w-full text-sm underline  sm:w-1/4"
               >
                 {project.name}
               </a>
             ) : (
-              <span className="w-1/4 text-sm">{project.name}</span>
+              <span className="w-full text-sm sm:w-1/4">{project.name}</span>
             )}
 
-            <span className="flex-1 text-xs">{project.description}</span>
+            <span className="hidden flex-1 text-xs sm:block">
+              {project.description}
+            </span>
             <span className="text-sm">{project.year}</span>
           </div>
         ))}

@@ -1,7 +1,7 @@
 const Info = () => {
   return (
-    <section className="my-24 flex justify-between">
-      <div className="flex max-w-xl flex-col gap-4">
+    <section className="text-off-black dark:text-off-white my-12 flex flex-col justify-between sm:my-24 md:flex-row">
+      <div className="flex w-full flex-col gap-4 sm:max-w-2xl">
         <p>
           I&apos;m currently Lead Product Engineer at{" "}
           <a href="https://futurefriendly.team" className="underline">
@@ -29,7 +29,7 @@ const Info = () => {
         <p>I&apos;m based on Gadigal land in Australia.</p>
       </div>
 
-      <div className="w-fit self-end whitespace-nowrap text-xs">
+      <div className="mt-12 self-end whitespace-nowrap text-xs md:mt-auto">
         Scroll down ↓
       </div>
     </section>

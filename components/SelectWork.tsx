@@ -5,7 +5,7 @@ import Image from "next/image";
 const SelectWork = ({ projects }: { projects: Project[] }) => {
   return (
     <section className="my-24">
-      <h1 className="text-4xl font-bold uppercase italic">
+      <h1 className="text-off-black dark:text-off-white text-4xl font-bold uppercase italic">
         Select work <sup>{projects.length}</sup>
       </h1>
 
@@ -35,19 +35,19 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
               style={{ objectFit: "cover" }}
             />
 
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-transparent to-black/50"></div>
+            <div className="to-off-black/50 absolute inset-0 rounded-2xl bg-gradient-to-b from-transparent"></div>
 
             <div className="flex w-full justify-between">
               <div className="absolute bottom-5 left-5 ">
-                <h1 className="text-2xl font-bold uppercase italic text-white">
+                <h1 className="text-off-white text-2xl font-bold uppercase italic">
                   {project.name}
                 </h1>
 
-                <ul className="mt-2 flex gap-2 uppercase text-black">
+                <ul className="text-off-black mt-2 flex gap-2 uppercase">
                   {project.sectors.map((sector, index) => (
                     <li
                       key={index}
-                      className="rounded-full border bg-white px-4 py-1 text-sm"
+                      className="bg-off-white rounded-full border px-4 py-1 text-sm"
                     >
                       {sector}
                     </li>
@@ -55,7 +55,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
                 </ul>
               </div>
 
-              <h1 className="absolute bottom-5 right-5 font-mono text-2xl font-bold uppercase italic text-white">
+              <h1 className="text-off-white absolute bottom-5 right-5 font-mono text-2xl font-bold uppercase italic">
                 {project.year}
               </h1>
             </div>

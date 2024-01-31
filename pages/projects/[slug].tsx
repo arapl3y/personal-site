@@ -41,11 +41,11 @@ const Project = ({ project }: { project: Project }) => {
       <motion.div
         {...anim(contentVariants)}
         {...animateProps}
-        className="container my-20"
+        className="container my-12 sm:my-24"
       >
         <Link href="/">← Back</Link>
 
-        <h1 className="mt-8 text-4xl font-bold uppercase italic text-black dark:text-white ">
+        <h1 className="text-off-black dark:text-off-white mt-8 text-4xl font-bold uppercase italic ">
           {project?.name}
         </h1>
 
@@ -75,7 +75,7 @@ const Project = ({ project }: { project: Project }) => {
           ))}
         </div>
 
-        <div className="prose my-10 max-w-2xl text-black dark:text-white">
+        <div className="prose text-off-black dark:text-off-white my-10 max-w-2xl">
           <PortableText value={project?.content} />
         </div>
 

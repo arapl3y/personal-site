@@ -17,13 +17,13 @@ export default function Nav() {
       >
         <div>
           <Link href="/">
-            <h3 className="text-3xl font-bold uppercase italic text-black dark:text-white">
+            <h3 className="text-off-black dark:text-off-white text-3xl font-bold uppercase italic">
               RAPLEY
             </h3>
           </Link>
         </div>
 
-        <ul className="font-body flex items-center gap-4 uppercase">
+        <ul className="font-body flex items-center gap-4 text-sm uppercase sm:text-base">
           <li>
             <Link href="/">Work</Link>
           </li>

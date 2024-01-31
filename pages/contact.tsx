@@ -23,26 +23,29 @@ const Contact = () => {
       <motion.div
         {...anim(contentVariants)}
         {...animateProps}
-        className="container my-32 flex justify-center"
+        className="my:12 container flex justify-center sm:my-24"
       >
-        <div className="relative flex h-[35rem] flex-col gap-4">
+        <div className="relative flex h-[28rem] flex-col gap-4 sm:h-[35rem]">
           <h1 className="text-2xl">G&apos;day!</h1>
-          <p className="ml-12">
-            I&apos;m always open to freelance opportunities, especially for
-            interesting, creative projects.
-          </p>
 
-          <p className="ml-12">
-            In my spare time I&apos;m enjoying learning WebGL and game
-            development.
-          </p>
-          <p className="ml-12">Feel free to get in touch.</p>
+          <div className="ml-6 sm:ml-12">
+            <p>
+              I&apos;m always open to freelance opportunities, especially for
+              interesting, creative projects.
+            </p>
 
-          <div className="mt-32">
+            <p>
+              In my spare time I&apos;m enjoying learning WebGL and game
+              development.
+            </p>
+            <p>Feel free to get in touch.</p>
+          </div>
+
+          <div className="flex-end mt-6 sm:mt-12">
             <SocialLinks />
           </div>
 
-          <div className="absolute bottom-0 right-0 aspect-[9/12] w-1/2">
+          <div className="absolute bottom-3 right-3 aspect-[9/12] w-1/2 ">
             <Image
               src="/alex.png"
               alt="A photo of Alex Rapley playing NBA Jam on an arcade machine"

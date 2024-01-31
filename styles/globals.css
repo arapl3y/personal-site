@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-    html,
-    body {
+    html {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        @apply bg-off-white dark:bg-off-black;
+        @apply transition-colors duration-300;
     }
 
     html.lenis {

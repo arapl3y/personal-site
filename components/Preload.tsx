@@ -23,7 +23,7 @@ export default function Preload() {
       <motion.div
         {...anim(containerVariants)}
         animate={containerControls}
-        className="fixed inset-0 z-10 h-screen w-screen bg-black dark:bg-[#343434]"
+        className="bg-off-black fixed inset-0 z-10 h-screen w-screen dark:bg-[#343434]"
         onAnimationComplete={(definition: string) =>
           handleAnimationComplete(definition)
         }
@@ -38,7 +38,7 @@ export default function Preload() {
           <motion.h1
             {...anim(loaderVariants)}
             animate={loaderControls}
-            className="relative z-10 px-4 text-6xl font-bold uppercase italic text-black dark:text-white"
+            className="text-off-black dark:text-off-white relative z-10 px-4 text-6xl font-bold uppercase italic"
           >
             Rapley
           </motion.h1>

@@ -5,9 +5,19 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
+    extend: {
+      colors: {
+        "off-black": "#1a1a1a",
+        "off-white": "#fefefe",
+      },
+    },
+
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+      },
       screens: {
         sm: "100%",
         md: "100%",

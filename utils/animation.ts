@@ -71,7 +71,7 @@ export const navVariants = {
 
 export const contentVariants = {
   initial: {
-    y: 100,
+    y: 50,
     opacity: 0,
   },
   enter: {
@@ -83,7 +83,7 @@ export const contentVariants = {
     },
   },
   exit: {
-    y: 100,
+    y: 50,
     opacity: 0,
     transition: {
       duration: 0.8,
