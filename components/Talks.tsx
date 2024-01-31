@@ -8,9 +8,7 @@ const Talks = () => {
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
       className="text-off-black dark:text-off-white my-24"
     >
-      <h1 className="text-4xl font-bold uppercase italic">
-        Talks <sup>2</sup>
-      </h1>
+      <h1 className="text-4xl font-bold uppercase italic">Talks</h1>
 
       <div className="divide-off-black dark:divide-off-white mt-12 grid grid-cols-1 divide-y text-sm">
         <div className="py-4">

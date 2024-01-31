@@ -26,9 +26,9 @@ const Contact = () => {
         className="container my-12 flex sm:my-24"
       >
         <div className="relative flex h-[28rem] flex-col gap-4 sm:h-[35rem]">
-          <h1 className="text-2xl">G&apos;day!</h1>
+          <h1 className="text-2xl">Hello,</h1>
 
-          <p>I&apos;m always open to interesting, creative opportunities.</p>
+          <p>I&apos;m open to interesting, creative opportunities.</p>
 
           <p>
             In my spare time I&apos;m enjoying learning WebGL, Blender and game
@@ -40,15 +40,23 @@ const Contact = () => {
             <SocialLinks />
           </div>
 
-          <div className="absolute bottom-3 right-3 aspect-[9/12] w-1/2">
+          <motion.div
+            initial={{ opacity: 0, rotate: 6 }}
+            animate={{ opacity: 1 }}
+            whileHover={{
+              rotate: 0,
+              transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1] },
+            }}
+            className="absolute bottom-3 right-3 mt-32 aspect-[9/12] w-1/2 md:mt-8"
+          >
             <Image
               src="/alex.png"
               alt="A photo of Alex Rapley playing NBA Jam on an arcade machine"
               fill
               style={{ objectFit: "cover" }}
-              className="mt-32 rotate-6 transform rounded-2xl md:mt-8"
+              className="rounded-2xl"
             />
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </>

@@ -4,8 +4,10 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import { navVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Nav() {
+  const router = useRouter();
   const navControls = useBoundStore((state) => state.navControls);
 
   return (
@@ -18,16 +20,16 @@ export default function Nav() {
         <div>
           <Link href="/">
             <h3 className="text-off-black dark:text-off-white text-3xl font-bold uppercase italic">
-              RAPLEY
+              AR.
             </h3>
           </Link>
         </div>
 
         <ul className="font-body flex items-center gap-4 text-sm uppercase sm:text-base">
-          <li>
+          <li className={router.pathname === "/" ? "underline" : ""}>
             <Link href="/">Work</Link>
           </li>
-          <li>
+          <li className={router.pathname === "/contact" ? "underline" : ""}>
             <Link href="/contact">Contact</Link>
           </li>
           <li>

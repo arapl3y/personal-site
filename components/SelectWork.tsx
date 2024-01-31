@@ -6,7 +6,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
   return (
     <section className="my-24">
       <h1 className="text-off-black dark:text-off-white text-4xl font-bold uppercase italic">
-        Select work <sup>{projects.length}</sup>
+        Select work
       </h1>
 
       <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2">

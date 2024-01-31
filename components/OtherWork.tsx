@@ -9,9 +9,7 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
       className="text-off-black dark:text-off-white my-24"
     >
-      <h1 className="text-4xl font-bold uppercase italic">
-        Other work <sup>{projects.length}</sup>
-      </h1>
+      <h1 className="text-4xl font-bold uppercase italic">Other work</h1>
 
       <div className="divide-off-black dark:divide-off-white mt-8 grid grid-cols-1 divide-y">
         {projects.map((project) => (
