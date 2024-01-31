@@ -13,7 +13,7 @@ const Info = () => {
 
         <div>
           <p>
-            Working on large and small projects, production and prototype for
+            Working on large and small, production and prototype projects for
             organisations across Government, Education, Finance, Environment and
             Health.
           </p>

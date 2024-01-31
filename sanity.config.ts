@@ -1,10 +1,6 @@
 import { defineConfig } from "sanity";
 import { deskTool, StructureBuilder } from "sanity/desk";
-import {
-  orderRankField,
-  orderRankOrdering,
-  orderableDocumentListDeskItem,
-} from "@sanity/orderable-document-list";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 
 import schemas from "./sanity/schemas";
 
@@ -22,9 +18,26 @@ const config = defineConfig({
     deskTool({
       structure: (S, context) => {
         return S.list()
-          .title("Projects")
+          .title("Content")
           .items([
-            orderableDocumentListDeskItem({ type: "project", S, context }),
+            orderableDocumentListDeskItem({
+              title: "Projects",
+              type: "project",
+              S,
+              context,
+            }),
+            orderableDocumentListDeskItem({
+              title: "Awards",
+              type: "award",
+              S,
+              context,
+            }),
+            orderableDocumentListDeskItem({
+              title: "Talks",
+              type: "talk",
+              S,
+              context,
+            }),
           ]);
       },
     }),

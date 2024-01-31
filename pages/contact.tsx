@@ -54,7 +54,7 @@ const Contact = () => {
               alt="A photo of Alex Rapley playing NBA Jam on an arcade machine"
               fill
               style={{ objectFit: "cover" }}
-              className="rounded-2xl"
+              className="rounded-2xl shadow-2xl"
             />
           </motion.div>
         </div>

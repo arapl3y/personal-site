@@ -1,6 +1,8 @@
+import { Award } from "@/types/award";
 import { motion } from "framer-motion";
+import TableList from "./TableList";
 
-const Awards = () => {
+const Awards = ({ awards }: { awards: Award[] }) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 50 }}
@@ -10,20 +12,7 @@ const Awards = () => {
     >
       <h1 className="text-4xl font-bold uppercase italic">Awards</h1>
 
-      <div className="divide-off-black dark:divide-off-white mt-8 grid grid-cols-1 divide-y text-sm">
-        <div className="py-4">
-          <p>Good Design Award 2022</p>
-        </div>
-        <div className="py-4">
-          <p>Good Design Award 2022</p>
-        </div>
-        <div className="py-4">
-          <p>Good Design Award 2022</p>
-        </div>
-        <div className="py-4">
-          <p>GovHack winner 2019</p>
-        </div>
-      </div>
+      <TableList items={awards} />
     </motion.section>
   );
 };

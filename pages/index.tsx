@@ -10,11 +10,17 @@ import { getOtherProjects, getSelectProjects } from "@/sanity/projects";
 import Info from "@/components/Info";
 import { Project } from "@/types/project";
 import { useBoundStore } from "@/store";
+import { getAwards } from "@/sanity/awards";
+import { Award } from "@/types/award";
+import { getTalks } from "@/sanity/talk";
+import { Talk } from "@/types/talk";
 
 const Home: NextPage<{
+  awards: Award[];
   projects: Project[];
   otherProjects: Project[];
-}> = ({ projects, otherProjects }) => {
+  talks: Talk[];
+}> = ({ projects, otherProjects, awards, talks }) => {
   const contentControls = useBoundStore((state) => state.contentControls);
   const hasPreloaded = useBoundStore((state) => state.hasPreloaded);
 
@@ -37,8 +43,8 @@ const Home: NextPage<{
         <Info />
         <SelectWork projects={projects} />
         <OtherWork projects={otherProjects} />
-        <Awards />
-        <Talks />
+        <Awards awards={awards} />
+        <Talks talks={talks} />
       </motion.div>
     </>
   );
@@ -47,11 +53,15 @@ const Home: NextPage<{
 export const getStaticProps = async () => {
   const projects = await getSelectProjects();
   const otherProjects = await getOtherProjects();
+  const awards = await getAwards();
+  const talks = await getTalks();
 
   return {
     props: {
       projects,
       otherProjects,
+      awards,
+      talks,
     },
   };
 };

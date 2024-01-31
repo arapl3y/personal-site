@@ -1,6 +1,8 @@
+import { Talk } from "@/types/talk";
 import { motion } from "framer-motion";
+import TableList from "./TableList";
 
-const Talks = () => {
+const Talks = ({ talks }: { talks: Talk[] }) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 50 }}
@@ -10,14 +12,7 @@ const Talks = () => {
     >
       <h1 className="text-4xl font-bold uppercase italic">Talks</h1>
 
-      <div className="divide-off-black dark:divide-off-white mt-12 grid grid-cols-1 divide-y text-sm">
-        <div className="py-4">
-          <p>Make art with code</p>
-        </div>
-        <div className="py-4">
-          <p>Roadmapping 101</p>
-        </div>
-      </div>
+      <TableList items={talks} />
     </motion.section>
   );
 };

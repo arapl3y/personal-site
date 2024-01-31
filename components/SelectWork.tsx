@@ -1,6 +1,7 @@
 import { Project } from "@/types/project";
 import MotionLink from "@/components/MotionLink";
 import Image from "next/image";
+import MotionImage from "./MotionImage";
 
 const SelectWork = ({ projects }: { projects: Project[] }) => {
   return (
@@ -9,7 +10,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
         Select work
       </h1>
 
-      <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {projects.map((project, index) => (
           <MotionLink
             href={`/projects/${project.slug}`}
@@ -21,25 +22,28 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
             viewport={{ once: true }}
-            // whileHover={{
-            //   backgroundSize: "110%",
-            //   transition: { duration: 0.3, ease: [0.83, 0, 0.17, 1] },
-            // }}
-            className={`relative aspect-square ${index % 3 === 0 ? "md:col-span-2 md:aspect-[18/9]" : ""}`}
+            className={`relative block aspect-square w-full overflow-hidden rounded-2xl shadow-2xl`}
+            whileHover="hover"
           >
-            <Image
+            <MotionImage
               src={project.image}
               fill
               alt=""
               className="rounded-2xl"
               style={{ objectFit: "cover" }}
+              variants={{
+                hover: {
+                  scale: 1.05,
+                  transition: { duration: 0.6, type: "tween", ease: "easeOut" },
+                },
+              }}
             />
 
-            <div className="to-off-black/50 absolute inset-0 rounded-2xl bg-gradient-to-b from-transparent"></div>
+            <div className="to-off-black/40 absolute inset-0 rounded-2xl bg-gradient-to-b from-transparent"></div>
 
             <div className="flex w-full justify-between">
               <div className="absolute bottom-5 left-5 ">
-                <h1 className="text-off-white text-2xl font-bold uppercase italic">
+                <h1 className="text-off-white text-3xl font-bold uppercase italic">
                   {project.name}
                 </h1>
 
