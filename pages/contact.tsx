@@ -23,7 +23,7 @@ const Contact = () => {
       <motion.div
         {...anim(contentVariants)}
         {...animateProps}
-        className="container my-12 flex sm:my-24"
+        className="container my-12 flex"
       >
         <div className="relative flex h-[28rem] flex-col gap-4 sm:h-[35rem]">
           <h1 className="text-2xl">Hello,</h1>

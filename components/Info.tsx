@@ -1,6 +1,6 @@
 const Info = () => {
   return (
-    <section className="text-off-black dark:text-off-white my-12 flex flex-col justify-between sm:my-24 md:flex-row">
+    <section className="text-off-black dark:text-off-white my-12 flex flex-col justify-between md:flex-row">
       <div className="flex w-full max-w-4xl flex-col gap-4">
         <p>
           Lead Product Engineer at{" "}

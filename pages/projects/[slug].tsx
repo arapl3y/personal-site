@@ -41,7 +41,7 @@ const Project = ({ project }: { project: Project }) => {
       <motion.div
         {...anim(contentVariants)}
         {...animateProps}
-        className="container my-12 sm:my-24"
+        className="container my-12"
       >
         <Link href="/">← Back</Link>
 

@@ -78,7 +78,7 @@ export const contentVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: [0.83, 0, 0.17, 1],
     },
   },
@@ -86,7 +86,7 @@ export const contentVariants = {
     y: 50,
     opacity: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: [0.83, 0, 0.17, 1],
     },
   },

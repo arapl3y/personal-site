@@ -7,7 +7,7 @@ import Nav from "@/components/Nav";
 
 function App({ Component, pageProps, router }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="dark">
       <Layout>
         <Nav />
         <AnimatePresence mode="wait">
