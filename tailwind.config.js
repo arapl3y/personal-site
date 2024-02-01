@@ -7,23 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "off-black": "#1a1a1a",
+        "off-black": "#212121",
         "off-white": "#fefefe",
       },
     },
-
     container: {
       center: true,
       padding: {
         DEFAULT: "1rem",
         sm: "2rem",
-      },
-      screens: {
-        sm: "100%",
-        md: "100%",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1600px",
       },
     },
     fontFamily: {

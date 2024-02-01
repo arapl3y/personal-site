@@ -35,6 +35,29 @@ const project = {
       ],
     },
     {
+      name: "client",
+      title: "Client",
+      type: "string",
+    },
+    {
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: "year",
       title: "Year",
       type: "string",

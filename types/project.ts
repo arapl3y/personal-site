@@ -7,6 +7,7 @@ export type Project = {
   slug: string;
   image: string;
   url: string;
+  client: string;
   color: string;
   content: PortableTextBlock[];
   technologies: string[];
@@ -15,4 +16,5 @@ export type Project = {
   year: string;
   highlight?: boolean;
   description?: string;
+  images: string[];
 };

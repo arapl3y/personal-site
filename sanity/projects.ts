@@ -10,13 +10,14 @@ export async function getSelectProjects() {
       "slug": slug.current,
       "image": image.asset->url,
       url,
+      client,
       color,
       content,
       technologies,
       awards,
       sectors,
       year,
-      highlight,
+      highlight
     }
   `;
 
@@ -29,8 +30,10 @@ export async function getProject(slug: string) {
     _id,
     _createdAt,
     name,
+    client,
     "slug": slug.current,
     "image": image.asset->url,
+    "images": images[].asset->url,
     url,
     color,
     content,

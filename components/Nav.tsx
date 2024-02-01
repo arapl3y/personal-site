@@ -26,10 +26,10 @@ export default function Nav() {
         </div>
 
         <ul className="font-body flex items-center gap-4 text-sm uppercase sm:text-base">
-          <li className={router.pathname === "/" ? "underline" : ""}>
+          <li className={router.pathname === "/" ? "line-through" : ""}>
             <Link href="/">Work</Link>
           </li>
-          <li className={router.pathname === "/contact" ? "underline" : ""}>
+          <li className={router.pathname === "/contact" ? "line-through" : ""}>
             <Link href="/contact">Contact</Link>
           </li>
           <li>

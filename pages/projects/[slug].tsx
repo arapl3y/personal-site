@@ -45,7 +45,7 @@ const Project = ({ project }: { project: Project }) => {
       >
         <Link href="/">← Back</Link>
 
-        <h1 className="text-off-black dark:text-off-white mt-8 text-4xl font-bold uppercase italic ">
+        <h1 className="text-off-black dark:text-off-white mt-8 text-5xl font-bold uppercase italic">
           {project?.name}
         </h1>
 
@@ -75,19 +75,27 @@ const Project = ({ project }: { project: Project }) => {
           ))}
         </div>
 
-        <div className="prose text-off-black dark:text-off-white my-10 max-w-2xl">
+        <div className="prose dark:prose-invert text-off-black dark:text-off-white my-10 max-w-4xl">
           <PortableText value={project?.content} />
         </div>
 
-        <div className="relative mt-8 aspect-video w-full rounded-2xl">
-          <Image
-            src={project?.image}
-            alt=""
-            fill
-            className="rounded-2xl"
-            style={{ objectFit: "cover" }}
-            priority
-          />
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {project.images?.map((image, index) => (
+            <motion.div
+              whileHover={{ aspectRatio: "16/9" }}
+              className="relative aspect-square rounded-2xl"
+              key={index}
+            >
+              <Image
+                src={image}
+                alt=""
+                fill
+                className="rounded-2xl"
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </>

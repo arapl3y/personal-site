@@ -23,7 +23,7 @@ export default function Preload() {
       <motion.div
         {...anim(containerVariants)}
         animate={containerControls}
-        className="bg-off-black dark:bg-off-white fixed inset-0 z-10 h-screen w-screen"
+        className="bg-off-black fixed inset-0 z-10 h-screen w-screen dark:bg-[#424242]"
         onAnimationComplete={(definition: string) =>
           handleAnimationComplete(definition)
         }
