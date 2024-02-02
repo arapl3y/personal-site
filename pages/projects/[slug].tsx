@@ -83,7 +83,7 @@ const Project = ({ project }: { project: Project }) => {
                 src={image.url}
                 alt={image.alt}
                 fill
-                sizes="40vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
                 className="rounded-2xl"
                 style={{ objectFit: "cover" }}
               />

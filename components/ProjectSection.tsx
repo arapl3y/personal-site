@@ -31,7 +31,7 @@ const ProjectSection = ({
           src={project.imageUrl}
           alt={project.imageAlt}
           fill
-          sizes="60vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
           style={{ objectFit: "cover" }}
           variants={{
             hover: {
