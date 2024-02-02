@@ -4,6 +4,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
+import AlexImage from "../public/alex.png";
 
 const Contact = () => {
   const contentControls = useBoundStore((state) => state.contentControls);
@@ -25,32 +26,32 @@ const Contact = () => {
         {...animateProps}
         className="container my-12 flex"
       >
-        <div className="relative flex h-[28rem] flex-col gap-4 sm:h-[35rem]">
-          <h1 className="text-2xl">Hello,</h1>
+        <div className="relative flex w-full flex-col sm:h-[35rem] md:flex-row">
+          <div className="flex flex-col gap-4">
+            <h1 className="text-2xl">Hello,</h1>
+            <p>Thanks for visiting my site.</p>
+            <p>
+              If you&apos;d like to work together, don&apos;t hesitate to get in
+              touch.
+            </p>
 
-          <p>I&apos;m open to interesting, creative opportunities.</p>
-
-          <p>
-            In my spare time I&apos;m enjoying learning WebGL, Blender and game
-            development.
-          </p>
-          <p>Feel free to get in touch.</p>
-
-          <div className="flex-end mt-6 sm:mt-12">
-            <SocialLinks />
+            <div className="flex-end mt-6 sm:mt-12">
+              <SocialLinks />
+            </div>
           </div>
 
           <motion.div
             initial={{ opacity: 0, rotate: 6 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 1, rotate: 6 }}
             whileHover={{
               rotate: 0,
               transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1] },
             }}
-            className="absolute bottom-3 right-3 mt-32 aspect-[9/12] w-1/2 md:mt-8"
+            className="relative ml-auto mt-8 aspect-[9/12] w-1/2 md:ml-4 md:w-1/3"
           >
             <Image
-              src="/alex.png"
+              src={AlexImage}
+              placeholder="blur"
               alt="A photo of Alex Rapley playing NBA Jam on an arcade machine"
               fill
               style={{ objectFit: "cover" }}

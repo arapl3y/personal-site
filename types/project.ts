@@ -5,7 +5,8 @@ export type Project = {
   _createdAt: string;
   name: string;
   slug: string;
-  image: string;
+  imageUrl: string;
+  imageAlt: string;
   url: string;
   client: string;
   color: string;
@@ -16,5 +17,5 @@ export type Project = {
   year: string;
   highlight?: boolean;
   description?: string;
-  images: string[];
+  images: { url: string; alt: string }[];
 };

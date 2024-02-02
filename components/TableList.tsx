@@ -3,7 +3,7 @@ import { Project } from "@/types/project";
 
 const TableList = ({ items }: { items: Project[] | Award[] }) => {
   return (
-    <div className="divide-off-black dark:divide-off-white mt-8 grid grid-cols-1 divide-y">
+    <div className="divide-off-black dark:divide-off-white border-off-black dark:border-off-white grid grid-cols-1 divide-y border-b border-t">
       {items.map((item) => (
         <div
           className="flex items-start justify-between gap-8 py-4 md:items-center"

@@ -27,6 +27,8 @@ const Project = ({ project }: { project: Project }) => {
     return null;
   }
 
+  // TODO: Add sector + award info
+
   return (
     <>
       <Head>
@@ -45,7 +47,8 @@ const Project = ({ project }: { project: Project }) => {
       >
         <Link href="/">← Back</Link>
 
-        <h1 className="text-off-black dark:text-off-white mt-8 text-5xl font-bold uppercase italic">
+        <h2 className="mb-4 mt-8 text-2xl uppercase">{project.client}</h2>
+        <h1 className="text-off-black dark:text-off-white text-3xl font-bold uppercase italic md:text-5xl">
           {project?.name}
         </h1>
 
@@ -60,15 +63,6 @@ const Project = ({ project }: { project: Project }) => {
           </a>
         )}
 
-        {/* <ul className="mt-4 flex flex-wrap gap-1">
-        {project.sectors?.map((sector) => (
-          <Chip key={`${project.name}-${sector}`}>{sector}</Chip>
-        ))}
-        {project.awards?.map((award) => (
-          <Chip key={`${project.name}-${award}`}>{award}</Chip>
-        ))}
-      </ul> */}
-
         <div className="mt-8 flex flex-wrap gap-2">
           {project.technologies?.map((tech) => (
             <Chip key={`${project?.name}-${tech}`}>{tech}</Chip>
@@ -82,17 +76,16 @@ const Project = ({ project }: { project: Project }) => {
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {project.images?.map((image, index) => (
             <motion.div
-              whileHover={{ aspectRatio: "16/9" }}
               className="relative aspect-square rounded-2xl"
               key={index}
             >
               <Image
-                src={image}
-                alt=""
+                src={image.url}
+                alt={image.alt}
                 fill
+                sizes="40vw"
                 className="rounded-2xl"
                 style={{ objectFit: "cover" }}
-                priority
               />
             </motion.div>
           ))}

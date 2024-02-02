@@ -27,8 +27,9 @@ const Info = () => {
         </div>
       </div>
 
-      <div className="mt-12 self-end whitespace-nowrap text-xs md:mt-auto">
-        Scroll down ↓
+      <div className="mt-12 flex items-center self-end whitespace-nowrap text-xs md:mt-auto">
+        <span className="mr-2">Scroll down</span>{" "}
+        <div className="animate-bounce">↓</div>
       </div>
     </section>
   );

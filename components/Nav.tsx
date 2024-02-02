@@ -5,10 +5,31 @@ import { navVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+const links = [
+  {
+    name: "Work",
+    href: "/",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
+  },
+];
 
 export default function Nav() {
+  const [selected, setSelected] = useState<string>();
   const router = useRouter();
   const navControls = useBoundStore((state) => state.navControls);
+
+  useEffect(() => {
+    if (router.pathname === "/") {
+      setSelected("work");
+    } else if (router.pathname === "/contact") {
+      setSelected("contact");
+    }
+  }, [router.pathname]);
 
   return (
     <motion.nav className="container overflow-hidden py-4 sm:py-8">
@@ -26,12 +47,34 @@ export default function Nav() {
         </div>
 
         <ul className="font-body flex items-center gap-4 text-sm uppercase sm:text-base">
-          <li className={router.pathname === "/" ? "line-through" : ""}>
-            <Link href="/">Work</Link>
-          </li>
-          <li className={router.pathname === "/contact" ? "line-through" : ""}>
-            <Link href="/contact">Contact</Link>
-          </li>
+          {links.map((link) => {
+            return (
+              <li
+                onClick={() => setSelected(link.name.toLowerCase())}
+                className="relative text-white"
+                key={link.name}
+              >
+                <Link
+                  href={link.href}
+                  className={`relative rounded px-2 py-1 transition`}
+                >
+                  <span className="relative z-10 mix-blend-exclusion">
+                    {link.name}
+                  </span>
+
+                  {selected === link.name.toLowerCase() && (
+                    <motion.div
+                      layoutId="selected-nav-link"
+                      style={{ borderRadius: 5 }}
+                      className="bg-off-black dark:bg-off-white absolute inset-0"
+                      transition={{ type: "spring", duration: 0.6 }}
+                    />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
+
           <li>
             <ThemeSwitch />
           </li>

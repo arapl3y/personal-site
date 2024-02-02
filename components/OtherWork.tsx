@@ -10,7 +10,7 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
       className="text-off-black dark:text-off-white my-24"
     >
-      <h1 className="text-4xl font-bold uppercase italic">Other work</h1>
+      <h1 className="mb-8 text-4xl font-bold uppercase italic">Other work</h1>
 
       <TableList items={projects} />
     </motion.div>

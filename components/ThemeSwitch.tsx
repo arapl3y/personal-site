@@ -10,7 +10,7 @@ const ThemeSwitch = () => {
   }, []);
 
   return (
-    <div className="min-w-[2.5rem]">
+    <div className="min-w-[3rem]">
       {mounted && (
         <button
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}

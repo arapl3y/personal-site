@@ -68,11 +68,6 @@ const project = {
       type: "url",
     },
     {
-      name: "color",
-      title: "Color",
-      type: "string",
-    },
-    {
       name: "technologies",
       title: "Technologies",
       type: "array",

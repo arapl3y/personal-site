@@ -1,6 +1,3 @@
-import { AnimationControls, motion, useAnimation } from "framer-motion";
-import { anim } from "../utils/animation";
-
 export default function SocialLinks() {
   const links = [
     {
@@ -18,15 +15,16 @@ export default function SocialLinks() {
   ];
 
   return (
-    <ul className="flex gap-4 overflow-hidden underline">
+    <ul className="flex gap-4">
       {links.map((link) => (
         <a
           key={link.text}
           href={link.href}
           rel="noopener noreferrer"
           target="_blank"
+          className="bg-off-black dark:text-off-black text-off-white rounded border px-4 py-1 text-xs uppercase sm:text-sm dark:bg-white"
         >
-          {link.text}
+          {link.text} ↗
         </a>
       ))}
     </ul>
