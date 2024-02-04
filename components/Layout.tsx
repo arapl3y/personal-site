@@ -3,11 +3,8 @@ import Lenis from "@studio-freight/lenis";
 import { useAnimation } from "framer-motion";
 import { useBoundStore } from "@/store";
 import Preload from "@/components/Preload";
-import { useRouter } from "next/router";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const router = useRouter();
-
   // Animation controls
   const loaderControls = useAnimation();
   const containerControls = useAnimation();
@@ -69,18 +66,15 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   // Smooth scroll
   useEffect(() => {
-    // Don't run smooth scroll on Sanity studio
-    if (!router.route.includes("admin")) {
-      const lenis = new Lenis();
+    const lenis = new Lenis();
 
-      const raf = (time: number) => {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      };
-
+    const raf = (time: number) => {
+      lenis.raf(time);
       requestAnimationFrame(raf);
-    }
-  }, [router]);
+    };
+
+    requestAnimationFrame(raf);
+  });
 
   return (
     <>
