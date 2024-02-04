@@ -9,7 +9,7 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
       viewport={{ once: true }}
-      className="text-off-black dark:text-off-white my-24"
+      className="text-off-black dark:text-off-white my-12 md:my-24"
     >
       <h1 className="mb-8 text-4xl font-bold uppercase italic">Other work</h1>
 

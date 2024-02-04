@@ -54,7 +54,7 @@ const Project = ({ project }: { project: Project }) => {
 
         <div className="flex flex-wrap mt-8 gap-8 md:gap-16">
           <div className="flex flex-col w-full md:w-1/3">
-            <h4 className="uppercase mb-6 md:mb-2 font-bold">Technology</h4>
+            <h4 className="uppercase mb-5 md:mb-2 font-bold">Technology</h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies?.map((tech) => (
                 <Chip key={`${project?.name}-${tech}`}>{tech}</Chip>
@@ -64,7 +64,7 @@ const Project = ({ project }: { project: Project }) => {
 
           {project.awards?.length > 0 && (
             <div className="flex flex-col w-full md:w-1/4">
-              <h4 className="uppercase mb-6 md:mb-2 font-bold">Recognition</h4>
+              <h4 className="uppercase mb-5 md:mb-2 font-bold">Recognition</h4>
               <Image
                 src="/gda-winner.svg"
                 width={0}
@@ -77,7 +77,7 @@ const Project = ({ project }: { project: Project }) => {
 
           {project?.url && (
             <div className="flex flex-col w-full md:w-1/4">
-              <h4 className="uppercase mb-2 font-bold">Link</h4>
+              <h4 className="uppercase mb-5 md:mb-2 font-bold">Link</h4>
               <a
                 href={project?.url}
                 className="block underline"

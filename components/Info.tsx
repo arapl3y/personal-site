@@ -1,6 +1,6 @@
 const Info = () => {
   return (
-    <section className="text-off-black dark:text-off-white my-12 flex w-full max-w-4xl flex-col gap-4">
+    <section className="text-off-black dark:text-off-white mt-12 md:mt-24 flex w-full max-w-4xl flex-col gap-4">
       <p>
         Lead Product Engineer at{" "}
         <a href="https://futurefriendly.team" className="underline">
@@ -12,7 +12,7 @@ const Info = () => {
 
       <div>
         <p>
-          Working on large and small, production and prototype projects for
+          Working on large, small, production and prototype projects for
           organisations across Government, Education, Finance, Environment and
           Health.
         </p>
