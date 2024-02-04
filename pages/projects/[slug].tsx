@@ -1,6 +1,6 @@
 import { getProject, getProjectPaths } from "@/sanity/projects";
 import { GetStaticProps } from "next";
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
 import { ParsedUrlQuery } from "querystring";
 import { PortableText } from "@portabletext/react";
 import Chip from "@/components/Chip";
@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
 import { useRouter } from "next/router";
+import ProjectSection from "@/components/ProjectSection";
 
 const Project = ({ project }: { project: Project }) => {
   const contentControls = useBoundStore((state) => state.contentControls);
@@ -27,8 +28,7 @@ const Project = ({ project }: { project: Project }) => {
     return null;
   }
 
-  // TODO: Add sector + award info
-
+  // TODO: Add award info
   return (
     <>
       <Head>
@@ -47,33 +47,54 @@ const Project = ({ project }: { project: Project }) => {
       >
         <Link href="/">← Back</Link>
 
-        <h2 className="mb-4 mt-8 text-2xl uppercase">{project.client}</h2>
+        <h2 className="mb-2 mt-8 text-2xl uppercase">{project.client}</h2>
         <h1 className="text-off-black dark:text-off-white text-3xl font-bold uppercase italic md:text-5xl">
           {project?.name}
         </h1>
 
-        {project?.url && (
-          <a
-            href={project?.url}
-            className="mt-4 block underline"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            {project?.url}
-          </a>
-        )}
+        <div className="flex flex-wrap mt-8 gap-8 md:gap-16">
+          <div className="flex flex-col w-full md:w-1/3">
+            <h4 className="uppercase mb-6 md:mb-2 font-bold">Technology</h4>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies?.map((tech) => (
+                <Chip key={`${project?.name}-${tech}`}>{tech}</Chip>
+              ))}
+            </div>
+          </div>
 
-        <div className="mt-8 flex flex-wrap gap-2">
-          {project.technologies?.map((tech) => (
-            <Chip key={`${project?.name}-${tech}`}>{tech}</Chip>
-          ))}
+          {project.awards?.length > 0 && (
+            <div className="flex flex-col w-full md:w-1/4">
+              <h4 className="uppercase mb-6 md:mb-2 font-bold">Recognition</h4>
+              <Image
+                src="/gda-winner.svg"
+                width={0}
+                height={0}
+                alt="GDA Winner"
+                className="h-auto w-[6rem] dark:invert"
+              />
+            </div>
+          )}
+
+          {project?.url && (
+            <div className="flex flex-col w-full md:w-1/4">
+              <h4 className="uppercase mb-2 font-bold">Link</h4>
+              <a
+                href={project?.url}
+                className="block underline"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {project?.url}
+              </a>
+            </div>
+          )}
         </div>
 
         <div className="prose dark:prose-invert text-off-black dark:text-off-white my-10 max-w-4xl">
           <PortableText value={project?.content} />
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {project.images?.map((image, index) => (
             <motion.div
               className="relative aspect-square rounded-2xl"
@@ -89,6 +110,11 @@ const Project = ({ project }: { project: Project }) => {
               />
             </motion.div>
           ))}
+        </div>
+
+        <h3 className="text-4xl font-bold italic uppercase mt-32 mb-8">Next</h3>
+        <div>
+          <ProjectSection project={project.nextProject} index={0} />
         </div>
       </motion.div>
     </>

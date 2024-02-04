@@ -32,7 +32,7 @@ export default function Nav() {
   }, [router.pathname]);
 
   return (
-    <motion.nav className="container overflow-hidden py-4 sm:py-8">
+    <nav className="container overflow-hidden pt-4 pb-8 sm:pt-8">
       <motion.div
         {...anim(navVariants)}
         animate={navControls}
@@ -58,6 +58,7 @@ export default function Nav() {
                   href={link.href}
                   className={`relative rounded px-2 py-1 transition`}
                 >
+                  {/* TODO: Fix bug on light mode */}
                   <span className="relative z-10 mix-blend-exclusion">
                     {link.name}
                   </span>
@@ -80,6 +81,6 @@ export default function Nav() {
           </li>
         </ul>
       </motion.div>
-    </motion.nav>
+    </nav>
   );
 }

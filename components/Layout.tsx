@@ -3,26 +3,32 @@ import Lenis from "@studio-freight/lenis";
 import { useAnimation } from "framer-motion";
 import { useBoundStore } from "@/store";
 import Preload from "@/components/Preload";
+import { useRouter } from "next/router";
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const router = useRouter();
+
   // Animation controls
   const loaderControls = useAnimation();
   const containerControls = useAnimation();
   const navControls = useAnimation();
   const contentControls = useAnimation();
+  const footerControls = useAnimation();
 
   // Set animation controls in shared state
   const setLoaderControls = useBoundStore((state) => state.setLoaderControls);
   const setContainerControls = useBoundStore(
-    (state) => state.setContainerControls,
+    (state) => state.setContainerControls
   );
   const setNavControls = useBoundStore((state) => state.setNavControls);
+  const setFooterControls = useBoundStore((state) => state.setFooterControls);
   const setContentControls = useBoundStore((state) => state.setContentControls);
   const setHasPreloaded = useBoundStore((state) => state.setHasPreloaded);
 
   setLoaderControls(loaderControls);
   setContainerControls(containerControls);
   setNavControls(navControls);
+  setFooterControls(footerControls);
   setContentControls(contentControls);
 
   // First load animation sequence
@@ -32,6 +38,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       await containerControls.start("initial");
       await navControls.start("initial");
       await contentControls.start("initial");
+      await footerControls.start("initial");
 
       containerControls.start("enter");
       loaderControls.start("enter");
@@ -41,6 +48,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       navControls.start("enter");
       contentControls.start("enter");
+      footerControls.start("enter");
 
       setHasPreloaded(true);
     };
@@ -50,6 +58,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     containerControls,
     loaderControls,
     navControls,
+    footerControls,
     contentControls,
     setLoaderControls,
     setContainerControls,
@@ -60,21 +69,24 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   // Smooth scroll
   useEffect(() => {
-    const lenis = new Lenis();
+    // Don't run smooth scroll on Sanity studio
+    if (!router.route.includes("admin")) {
+      const lenis = new Lenis();
 
-    const raf = (time: number) => {
-      lenis.raf(time);
+      const raf = (time: number) => {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      };
+
       requestAnimationFrame(raf);
-    };
-
-    requestAnimationFrame(raf);
-  }, []);
+    }
+  }, [router]);
 
   return (
     <>
       <Preload />
 
-      {children}
+      <div className="flex flex-col h-full">{children}</div>
     </>
   );
 }

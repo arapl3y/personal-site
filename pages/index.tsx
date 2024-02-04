@@ -14,6 +14,7 @@ import { getAwards } from "@/sanity/awards";
 import { Award } from "@/types/award";
 import { getTalks } from "@/sanity/talk";
 import { Talk } from "@/types/talk";
+import SocialLinks from "@/components/SocialLinks";
 
 const Home: NextPage<{
   awards: Award[];
@@ -45,6 +46,15 @@ const Home: NextPage<{
         <OtherWork projects={otherProjects} />
         <Awards awards={awards} />
         <Talks talks={talks} />
+
+        <div>
+          <h1 className="text-4xl font-bold uppercase italic mb-8">Contact</h1>
+          <p>Don&apos;t hesitate to get in touch.</p>
+
+          <div className="my-6">
+            <SocialLinks />
+          </div>
+        </div>
       </motion.div>
     </>
   );

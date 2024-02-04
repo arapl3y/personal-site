@@ -15,7 +15,14 @@ module.exports = {
       center: true,
       padding: {
         DEFAULT: "1rem",
-        sm: "2rem",
+        md: "2rem",
+      },
+      screens: {
+        sm: "760px",
+        md: "888px",
+        lg: "1104px",
+        xl: "1360px",
+        "2xl": "1616px",
       },
     },
     fontFamily: {

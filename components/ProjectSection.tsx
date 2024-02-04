@@ -15,6 +15,7 @@ const ProjectSection = ({
   return (
     <div className="flex flex-col gap-6 md:flex-row md:gap-12 md:even:flex-row-reverse">
       <MotionLink
+        scroll={false}
         href={`/projects/${project.slug}`}
         initial={{
           opacity: 0,
@@ -60,12 +61,15 @@ const ProjectSection = ({
 
         <p>{project.description}</p>
 
-        <Link
+        <MotionLink
+          whileHover={{
+            rotate: -6,
+          }}
           href={`/projects/${project.slug}`}
           className="bg-off-black text-off-white dark:bg-off-white dark:text-off-black self-start rounded p-2 text-5xl font-bold uppercase"
         >
           ⭢
-        </Link>
+        </MotionLink>
 
         {project.awards?.length > 0 && (
           <Image

@@ -27,7 +27,7 @@ export async function getSelectProjects() {
 
 export async function getProject(slug: string) {
   const query = `
-  *[_type == "project" && slug.current == $slug][0]{
+  *[_type == "project" && slug.current == $slug][0] {
     _id,
     _createdAt,
     name,
@@ -42,7 +42,15 @@ export async function getProject(slug: string) {
     technologies,
     awards,
     sectors,
-    year
+    year,
+    "nextProject": nextProject->{
+      name,
+      "imageUrl": image.asset->url,
+      "imageAlt": image.alt,
+      "slug": slug.current,
+      sectors,
+      description
+    }
   }
 `;
 

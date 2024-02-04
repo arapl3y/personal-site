@@ -18,4 +18,5 @@ export type Project = {
   highlight?: boolean;
   description?: string;
   images: { url: string; alt: string }[];
+  nextProject: Project;
 };

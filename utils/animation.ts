@@ -69,6 +69,20 @@ export const navVariants = {
   exit: {},
 };
 
+export const footerVariants = {
+  initial: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.83, 0, 0.17, 1],
+    },
+  },
+  exit: {},
+};
+
 export const contentVariants = {
   initial: {
     y: 50,

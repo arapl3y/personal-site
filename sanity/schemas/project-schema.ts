@@ -58,6 +58,12 @@ const project = {
       ],
     },
     {
+      name: "nextProject",
+      title: "Next Project",
+      type: "reference",
+      to: [{ type: "project" }],
+    },
+    {
       name: "year",
       title: "Year",
       type: "string",

@@ -26,19 +26,8 @@ const Contact = () => {
         {...animateProps}
         className="container my-12 flex"
       >
-        <div className="relative flex w-full flex-col sm:h-[35rem] md:flex-row">
-          <div className="flex flex-col gap-4">
-            <h1 className="text-2xl">Hello,</h1>
-            <p>Thanks for visiting my site.</p>
-            <p>
-              If you&apos;d like to work together, don&apos;t hesitate to get in
-              touch.
-            </p>
-
-            <div className="flex-end mt-6 sm:mt-12">
-              <SocialLinks />
-            </div>
-          </div>
+        <div className="flex text-center flex-col justify-center items-center mx-auto gap-4">
+          <SocialLinks className="flex flex-col text-3xl md:text-5xl gap-4" />
 
           <motion.div
             initial={{ opacity: 0, rotate: 6 }}
@@ -47,7 +36,7 @@ const Contact = () => {
               rotate: 0,
               transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1] },
             }}
-            className="relative ml-auto mt-8 aspect-[9/12] w-1/2 md:ml-4 md:w-1/3"
+            className="my-4 relative aspect-[9/12] w-full h-full"
           >
             <Image
               src={AlexImage}
@@ -58,6 +47,8 @@ const Contact = () => {
               className="rounded-2xl shadow-2xl"
             />
           </motion.div>
+
+          <p>Thanks for visiting.</p>
         </div>
       </motion.div>
     </>

@@ -3,52 +3,60 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    min-height: 100%;
+  }
 
-    body {
-        @apply bg-off-white dark:bg-off-black;
-        @apply transition-colors duration-300;
-    }
+  body {
+    @apply bg-off-white dark:bg-off-black;
+    @apply transition-colors duration-300;
+    height: 100vh;
+  }
 
-    html.lenis {
-        height: auto;
-    }
+  #__next {
+    height: 100%;
+    min-height: 100%;
+  }
 
-    .lenis.lenis-smooth {
-        scroll-behavior: auto !important;
-    }
+  html.lenis {
+    height: auto;
+  }
 
-    .lenis.lenis-smooth [data-lenis-prevent] {
-        overscroll-behavior: contain;
-    }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 
-    .lenis.lenis-stopped {
-        overflow: hidden;
-    }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
 
-    .lenis.lenis-scrolling iframe {
-        pointer-events: none;
-    }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-        @apply font-display;
-    }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
 
-    p,
-    span,
-    a,
-    li {
-        @apply font-body;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display;
+  }
 
-    span.menu-link-text {
-        text-shadow: 0px 1.2em 0px black;
-    }
+  p,
+  span,
+  a,
+  li {
+    @apply font-body;
+  }
+
+  span.menu-link-text {
+    text-shadow: 0px 1.2em 0px black;
+  }
 }
