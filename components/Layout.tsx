@@ -65,16 +65,16 @@ export default function Layout({ children }: { children: ReactNode }) {
   ]);
 
   // Smooth scroll
-  useEffect(() => {
-    const lenis = new Lenis();
+  // useEffect(() => {
+  //   const lenis = new Lenis();
 
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
+  //   const raf = (time: number) => {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   };
 
-    requestAnimationFrame(raf);
-  });
+  //   requestAnimationFrame(raf);
+  // });
 
   return (
     <>
