@@ -5,8 +5,13 @@ export type Project = {
   _createdAt: string;
   name: string;
   slug: string;
-  imageUrl: string;
-  imageAlt: string;
+  image: {
+    url: string;
+    alt: string;
+    asset: any;
+    crop: any;
+    hotspot: any;
+  };
   url: string;
   client: string;
   color: string;

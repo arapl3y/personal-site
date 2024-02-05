@@ -1,5 +1,5 @@
 import { Award } from "@/types/award";
-import { client } from "./client";
+import client from "./client";
 
 export async function getAwards() {
   const query = `

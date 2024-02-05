@@ -1,5 +1,5 @@
 import { Project } from "@/types/project";
-import { client } from "./client";
+import client from "./client";
 
 export async function getSelectProjects() {
   const query = `
@@ -8,8 +8,13 @@ export async function getSelectProjects() {
       _createdAt,
       name,
       "slug": slug.current,
-      "imageUrl": image.asset->url,
-      "imageAlt": image.alt,
+      "image": image {
+        "url": asset->url,
+        "alt": alt,
+        asset,
+        crop,
+        hotspot
+      },
       url,
       client,
       content,
@@ -35,7 +40,10 @@ export async function getProject(slug: string) {
     "slug": slug.current,
     "images": images[] {
       "url": asset->url,
-      "alt": alt
+      "alt": alt,
+      asset,
+      crop,
+      hotspot,
     },
     url,
     content,
@@ -45,8 +53,13 @@ export async function getProject(slug: string) {
     year,
     "nextProject": nextProject->{
       name,
-      "imageUrl": image.asset->url,
-      "imageAlt": image.alt,
+      "image": image {
+        "url": asset->url,
+        "alt": alt,
+        asset,
+        crop,
+        hotspot
+      },
       "slug": slug.current,
       sectors,
       description

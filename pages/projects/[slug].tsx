@@ -12,8 +12,11 @@ import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
 import { useRouter } from "next/router";
 import ProjectSection from "@/components/ProjectSection";
+import { urlFor } from "@/sanity/client";
 
 const Project = ({ project }: { project: Project }) => {
+  console.log(project.images);
+
   const contentControls = useBoundStore((state) => state.contentControls);
   const hasPreloaded = useBoundStore((state) => state.hasPreloaded);
 
@@ -101,7 +104,7 @@ const Project = ({ project }: { project: Project }) => {
               key={index}
             >
               <Image
-                src={image.url}
+                src={urlFor(image).url()}
                 alt={image.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"

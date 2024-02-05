@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Chip from "./Chip";
 import { Project } from "@/types/project";
+import { urlFor } from "@/sanity/client";
 
 const ProjectSection = ({
   project,
@@ -29,8 +30,8 @@ const ProjectSection = ({
       >
         <MotionImage
           priority={index === 0}
-          src={project.imageUrl}
-          alt={project.imageAlt}
+          src={urlFor(project.image).url()}
+          alt={project.image.alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
           style={{ objectFit: "cover" }}
