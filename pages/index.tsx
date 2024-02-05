@@ -1,142 +1,68 @@
-import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import type { NextPage } from "next";
-import gsap from "gsap";
-import SplitType from "split-type";
+import { motion } from "framer-motion";
+import { anim, contentVariants } from "@/utils/animation";
+import SelectWork from "@/components/SelectWork";
+import OtherWork from "@/components/OtherWork";
+import Awards from "@/components/Awards";
+import Talks from "@/components/Talks";
+import { getOtherProjects, getSelectProjects } from "@/sanity/projects";
+import Info from "@/components/Info";
+import { Project } from "@/types/project";
+import { useBoundStore } from "@/store";
+import { getAwards } from "@/sanity/awards";
+import { Award } from "@/types/award";
+import { getTalks } from "@/sanity/talk";
+import { Talk } from "@/types/talk";
+import Contact from "@/components/Contact";
+import Meta from "@/components/Meta";
 
-const links = [
-  {
-    href: "//github.com/arapl3y",
-    text: "Github ↗",
-  },
-  {
-    href: "//www.linkedin.com/in/alex-rapley-7a00b159/",
-    text: "LinkedIn ↗",
-  },
-  {
-    href: "mailto:rapley3@gmail.com",
-    text: "Email ↗",
-  },
-];
+const Home: NextPage<{
+  awards: Award[];
+  projects: Project[];
+  otherProjects: Project[];
+  talks: Talk[];
+}> = ({ projects, otherProjects, awards, talks }) => {
+  const contentControls = useBoundStore((state) => state.contentControls);
+  const hasPreloaded = useBoundStore((state) => state.hasPreloaded);
 
-const Home: NextPage = () => {
-  const [splitText, setSplitText] = useState<SplitType>();
-  const linksRef = useRef<HTMLAnchorElement[]>([]);
-
-  // Title animation
-  useEffect(() => {
-    const splitTitle = new SplitType(".title", {
-      types: "chars",
-    });
-
-    gsap.to(splitTitle.chars, {
-      yPercent: -100,
-      duration: 0.8,
-      ease: "power4.inOut",
-      stagger: { each: 0.02 },
-      onComplete() {
-        gsap.set(splitTitle.chars, {
-          yPercent: 0,
-        });
-      },
-    });
-
-    return () => {
-      splitTitle.revert();
-    };
-  }, []);
-
-  // Split text for link animation
-  useEffect(() => {
-    const splitLinks = new SplitType(".menu-link", {
-      types: "chars",
-    });
-
-    setSplitText(splitLinks);
-
-    return () => {
-      splitLinks.revert();
-    };
-  }, []);
-
-  // Resize
-  useEffect(() => {
-    function handleResize() {
-      if (!splitText) return;
-
-      splitText.revert();
-
-      const splitLinks = new SplitType(".menu-link", {
-        types: "chars,words",
-      });
-
-      setSplitText(splitLinks);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
-
-  // Handlers for animation
-  const handleMouseEnter = (index: number) => {
-    const chars = linksRef.current[index].querySelectorAll(".char");
-
-    gsap.to(chars, {
-      yPercent: -80,
-      duration: 0.5,
-      ease: "power4.inOut",
-      stagger: { each: 0.01 },
-      overwrite: true,
-    });
-  };
-
-  const handleMouseLeave = (index: number) => {
-    const chars = linksRef.current[index].querySelectorAll(".char");
-
-    gsap.to(chars, {
-      yPercent: 0,
-      duration: 0.4,
-      ease: "power4.inOut",
-      stagger: { each: 0.01 },
-    });
-  };
+  // Use controls when part of intiial load sequence, otherwise just use variants
+  const animateProps = !hasPreloaded ? { animate: contentControls } : {};
 
   return (
-    <div className="container h-screen flex justify-center items-center">
-      <Head>
-        <title>🚧 🚧 🚧</title>
-        <meta name="description" content="Alex Rapley's personal site" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <Meta />
 
-      <main>
-        <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="title text-3xl md:text-6xl xl:text-8xl font-bold uppercase overflow-hidden whitespace-nowrap">
-            Under construction
-          </h1>
-
-          <ul className="mt-20 flex gap-8 font-body uppercase text-md md:text-2xl font-bold overflow-hidden">
-            {links.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  className="menu-link stagger-link"
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={() => handleMouseLeave(index)}
-                  ref={(el) => el && linksRef.current?.push(el)}
-                >
-                  <span className="menu-link-text">{link.text}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </main>
-    </div>
+      <motion.div
+        {...anim(contentVariants)}
+        {...animateProps}
+        className="container"
+      >
+        <Info />
+        <SelectWork projects={projects} />
+        <OtherWork projects={otherProjects} />
+        <Awards awards={awards} />
+        <Talks talks={talks} />
+        <Contact />
+      </motion.div>
+    </>
   );
+};
+
+export const getStaticProps = async () => {
+  const projects = await getSelectProjects();
+  const otherProjects = await getOtherProjects();
+  const awards = await getAwards();
+  const talks = await getTalks();
+
+  return {
+    props: {
+      projects,
+      otherProjects,
+      awards,
+      talks,
+    },
+  };
 };
 
 export default Home;
