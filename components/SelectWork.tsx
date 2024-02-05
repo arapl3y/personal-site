@@ -8,7 +8,7 @@ const SelectWork = ({ projects }: { projects: Project[] }) => {
         Select work
       </h1>
 
-      <div className="flex flex-col gap-y-12 md:gap-x-8 md:gap-y-24">
+      <div className="grid grid-cols-1 gap-y-12 md:gap-x-8 md:gap-y-24">
         {projects.map((project, index) => (
           <ProjectSection project={project} index={index} key={project._id} />
         ))}
