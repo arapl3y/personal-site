@@ -30,8 +30,6 @@ const Project = ({ project }: { project: Project }) => {
     return null;
   }
 
-  console.log(project);
-
   return (
     <>
       <Meta

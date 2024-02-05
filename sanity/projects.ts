@@ -46,6 +46,9 @@ export async function getProject(slug: string) {
       hotspot,
     },
     url,
+    "image": image {
+      "url": asset->url,
+    },
     content,
     technologies,
     awards,
