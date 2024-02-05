@@ -63,7 +63,8 @@ export async function getProject(slug: string) {
       "slug": slug.current,
       sectors,
       description
-    }
+    },
+    description
   }
 `;
 

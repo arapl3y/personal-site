@@ -13,10 +13,9 @@ import { useBoundStore } from "@/store";
 import { useRouter } from "next/router";
 import ProjectSection from "@/components/ProjectSection";
 import { urlFor } from "@/sanity/client";
+import Meta from "@/components/Meta";
 
 const Project = ({ project }: { project: Project }) => {
-  console.log(project.images);
-
   const contentControls = useBoundStore((state) => state.contentControls);
   const hasPreloaded = useBoundStore((state) => state.hasPreloaded);
 
@@ -31,17 +30,15 @@ const Project = ({ project }: { project: Project }) => {
     return null;
   }
 
-  // TODO: Add award info
+  console.log(project);
+
   return (
     <>
-      <Head>
-        <title>{`${project?.name} | Alex Rapley`}</title>
-        <meta
-          name="description"
-          content="Netflix Grow Creative Discovery Hub is a project that Alex Rapley worked on while at Future Friendly design studio."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title={`${project?.name} | Alex Rapley`}
+        description={project?.description}
+        image={project?.image?.url}
+      />
 
       <motion.div
         {...anim(contentVariants)}
@@ -98,7 +95,7 @@ const Project = ({ project }: { project: Project }) => {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {project.images?.map((image, index) => (
+          {project?.images?.map((image, index) => (
             <motion.div
               className="relative aspect-square rounded-2xl"
               key={index}

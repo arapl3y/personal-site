@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
 import Head from "next/head";
+import Meta from "@/components/Meta";
 
 const Custom404 = () => {
   const contentControls = useBoundStore((state) => state.contentControls);
@@ -12,11 +13,7 @@ const Custom404 = () => {
 
   return (
     <>
-      <Head>
-        <title>404 | Alex Rapley</title>
-        <meta name="description" content="Page not found." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta title="404 | Alex Rapley" description="Page not found." />
 
       <motion.div
         {...anim(contentVariants)}

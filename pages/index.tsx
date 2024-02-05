@@ -15,6 +15,7 @@ import { Award } from "@/types/award";
 import { getTalks } from "@/sanity/talk";
 import { Talk } from "@/types/talk";
 import Contact from "@/components/Contact";
+import Meta from "@/components/Meta";
 
 const Home: NextPage<{
   awards: Award[];
@@ -30,11 +31,7 @@ const Home: NextPage<{
 
   return (
     <>
-      <Head>
-        <title>Alex Rapley</title>
-        <meta name="description" content="Alex Rapley's personal site" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta />
 
       <motion.div
         {...anim(contentVariants)}

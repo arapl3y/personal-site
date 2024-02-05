@@ -1,10 +1,10 @@
 import Image from "next/image";
 import SocialLinks from "@/components/SocialLinks";
-import Head from "next/head";
 import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
 import AlexImage from "../public/alex.png";
+import Meta from "@/components/Meta";
 
 const Contact = () => {
   const contentControls = useBoundStore((state) => state.contentControls);
@@ -15,11 +15,10 @@ const Contact = () => {
 
   return (
     <>
-      <Head>
-        <title>Contact | Alex Rapley</title>
-        <meta name="description" content="Page not found." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title="Contact | Alex Rapley"
+        description="Social links for Alex Rapley"
+      />
 
       <motion.div
         {...anim(contentVariants)}
