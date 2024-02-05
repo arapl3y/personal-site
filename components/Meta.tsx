@@ -5,8 +5,6 @@ const Meta = ({
   description = "Alex Rapley's personal site",
   image = "/meta.png",
 }) => {
-  console.log(image);
-
   return (
     <Head>
       <title>{title}</title>

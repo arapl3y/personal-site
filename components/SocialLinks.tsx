@@ -26,7 +26,7 @@ export default function SocialLinks({ ...props }) {
           href={link.href}
           rel="noopener noreferrer"
           target="_blank"
-          className="text-off-black dark:text-off-white  uppercase"
+          className="text-off-black dark:text-off-white uppercase underline"
         >
           {link.text}
         </a>

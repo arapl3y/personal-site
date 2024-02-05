@@ -18,17 +18,12 @@ const Info = () => {
         </p>
 
         <p className="my-4">Specialising in:</p>
-        <ul className="ml-6 flex flex-col">
-          <li>Full-stack development</li>
-          <li>Creative technology</li>
-          <li>Motion design</li>
+        <ul className="ml-2 flex flex-col">
+          <li>⭢ Full-stack development</li>
+          <li>⭢ Creative technology</li>
+          <li>⭢ Motion design</li>
         </ul>
       </div>
-
-      {/* <div className="mt-12 flex items-center self-end whitespace-nowrap text-xs md:mt-auto">
-        <span className="mr-2">Scroll down</span>{" "}
-        <div className="animate-bounce">↓</div>
-      </div> */}
     </section>
   );
 };

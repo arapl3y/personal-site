@@ -25,7 +25,7 @@ const ProjectSection = ({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
         viewport={{ once: true }}
-        className={`relative block aspect-square w-full overflow-hidden rounded-2xl md:aspect-auto md:min-h-[30rem] md:w-[55%]`}
+        className={`relative block aspect-square w-full overflow-hidden rounded-2xl md:aspect-auto md:min-h-[30rem] 2xl:min-h-[34rem] md:w-[55%]`}
         whileHover="hover"
       >
         <MotionImage
@@ -67,7 +67,7 @@ const ProjectSection = ({
             rotate: -6,
           }}
           href={`/projects/${project.slug}`}
-          className="bg-off-black text-off-white dark:bg-off-white dark:text-off-black self-start rounded p-2 text-5xl font-bold uppercase"
+          className="bg-off-black text-off-white dark:bg-off-white dark:text-off-black self-start rounded text-5xl p-2 uppercase"
         >
           ⭢
         </MotionLink>
