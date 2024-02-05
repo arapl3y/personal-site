@@ -48,8 +48,8 @@ const ProjectSection = ({
         />
       </MotionLink>
 
-      <div className="text-off-black dark:text-off-white my-4 flex flex-1 flex-col gap-4 md:my-8">
-        <ul className="text-off-black flex gap-2 uppercase">
+      <div className="text-off-black dark:text-off-white my-4 flex flex-col flex-1 gap-y-4 md:my-8">
+        <ul className="text-off-black flex gap-x-2 uppercase">
           {project.sectors.map((sector, index) => (
             <li key={index}>
               <Chip>{sector}</Chip>
@@ -68,18 +68,18 @@ const ProjectSection = ({
             rotate: -6,
           }}
           href={`/projects/${project.slug}`}
-          className="bg-off-black text-off-white dark:bg-off-white dark:text-off-black self-start rounded text-5xl p-2 uppercase"
+          className="block w-fit bg-off-black text-off-white dark:bg-off-white dark:text-off-black self-start rounded text-5xl p-2 uppercase"
         >
           ⭢
         </MotionLink>
 
         {project.awards?.length > 0 && (
           <Image
-            src="/gda-winner.svg"
-            width={0}
+            src="/gda-winner.png"
+            width={100}
             height={0}
             alt="GDA Winner"
-            className="mt-4 h-auto w-[6rem] md:mt-auto dark:invert"
+            className="h-auto dark:invert mt-6 md:mt-12"
           />
         )}
       </div>
