@@ -63,6 +63,7 @@ const ProjectSection = ({
         <p>{project.description}</p>
 
         <MotionLink
+          scroll={false}
           whileHover={{
             rotate: -6,
           }}
