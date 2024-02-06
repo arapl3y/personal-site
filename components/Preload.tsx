@@ -32,7 +32,7 @@ export default function Preload() {
       {/* Text container */}
       <div
         ref={titleContainerRef}
-        className="absolute left-1/2 top-1/2 z-20 flex h-screen w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center text-center"
+        className="fixed left-1/2 top-1/2 z-20 flex h-screen w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center text-center"
       >
         <div className="overflow-hidden">
           <motion.h1
