@@ -4,7 +4,7 @@ import ProjectSection from "./ProjectSection";
 const SelectWork = ({ projects }: { projects: Project[] }) => {
   return (
     <section className="my-12 md:my-24">
-      <h1 className="text-off-black dark:text-off-white mb-8 text-4xl font-bold uppercase italic">
+      <h1 className="text-off-black dark:text-off-white mb-8 text-4xl sm:text-5xl font-bold uppercase">
         Select work
       </h1>
 

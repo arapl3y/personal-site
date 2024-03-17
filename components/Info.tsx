@@ -6,8 +6,8 @@ const Info = () => {
         <a href="https://futurefriendly.team" className="underline">
           Future Friendly
         </a>
-        , based on Gadigal land in Australia — focused on developing products
-        that improve people&apos;s everyday lives.
+        , based on Gadigal land in Australia — developing products that improve
+        people&apos;s everyday lives.
       </p>
 
       <div>

@@ -32,16 +32,16 @@ export default function Nav() {
   }, [router.pathname]);
 
   return (
-    <nav className="container overflow-hidden pt-4 pb-8 sm:pt-8">
+    <nav className="container overflow-hidden pt-4 pb-[3.5rem] sm:pt-8">
       <motion.div
         {...anim(navVariants)}
         animate={navControls}
-        className="flex items-center justify-between "
+        className="flex items-center justify-between"
       >
         <div>
           <Link href="/">
-            <h3 className="text-off-black dark:text-off-white text-3xl font-bold uppercase italic">
-              AR.
+            <h3 className="text-off-black dark:text-off-white text-4xl sm:text-6xl font-bold uppercase">
+              AR
             </h3>
           </Link>
         </div>

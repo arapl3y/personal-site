@@ -11,7 +11,7 @@ const Talks = ({ talks }: { talks: Talk[] }) => {
       transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
       className="text-off-black dark:text-off-white my-12 md:my-24"
     >
-      <h1 className="mb-8 text-4xl font-bold uppercase italic">Talks</h1>
+      <h1 className="mb-8 text-4xl sm:text-5xl font-bold uppercase">Talks</h1>
 
       <TableList items={talks} />
     </motion.section>

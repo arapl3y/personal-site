@@ -21,7 +21,7 @@ const Custom404 = () => {
         className="container"
       >
         <div className="mt-24 flex flex-col items-center justify-center">
-          <h1 className="text-8xl font-bold uppercase italic">404</h1>
+          <h1 className="text-8xl font-bold uppercase">404</h1>
           <p className="mt-8 text-xl">Sorry, page not found.</p>
         </div>
       </motion.div>
