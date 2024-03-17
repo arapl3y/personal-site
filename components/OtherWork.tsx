@@ -11,7 +11,7 @@ const OtherWork = ({ projects }: { projects: Project[] }) => {
       viewport={{ once: true }}
       className="text-off-black dark:text-off-white my-12 md:my-24"
     >
-      <h1 className="mb-8 text-4xl sm:text-5xl font-bold uppercase">
+      <h1 className="mb-8 text-4xl sm:text-5xl font-bold uppercase italic">
         Other work
       </h1>
 

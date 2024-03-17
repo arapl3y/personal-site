@@ -48,7 +48,7 @@ const Project = ({ project }: { project: Project }) => {
         <h2 className="mb-2 mt-8 text-2xl sm:text-3xl uppercase">
           {project.client}
         </h2>
-        <h1 className="text-off-black dark:text-off-white text-3xl font-bold uppercase md:text-5xl">
+        <h1 className="text-off-black dark:text-off-white text-3xl font-bold uppercase md:text-5xl italic">
           {project?.name}
         </h1>
 
@@ -112,7 +112,7 @@ const Project = ({ project }: { project: Project }) => {
           ))}
         </div>
 
-        <h3 className="text-4xl font-bold uppercase mt-32 mb-8">Next</h3>
+        <h3 className="text-4xl font-bold uppercase mt-32 mb-8 italic">Next</h3>
         <div>
           <ProjectSection project={project.nextProject} index={0} />
         </div>

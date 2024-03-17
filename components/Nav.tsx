@@ -40,8 +40,8 @@ export default function Nav() {
       >
         <div>
           <Link href="/">
-            <h3 className="text-off-black dark:text-off-white text-4xl sm:text-6xl font-bold uppercase">
-              AR
+            <h3 className="text-off-black dark:text-off-white text-4xl sm:text-6xl font-bold uppercase italic">
+              AR.
             </h3>
           </Link>
         </div>

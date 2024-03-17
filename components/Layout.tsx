@@ -1,5 +1,4 @@
 import { ReactNode, useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
 import { useAnimation } from "framer-motion";
 import { useBoundStore } from "@/store";
 import Preload from "@/components/Preload";
@@ -63,18 +62,6 @@ export default function Layout({ children }: { children: ReactNode }) {
     setContentControls,
     setHasPreloaded,
   ]);
-
-  // Smooth scroll
-  // useEffect(() => {
-  //   const lenis = new Lenis();
-
-  //   const raf = (time: number) => {
-  //     lenis.raf(time);
-  //     requestAnimationFrame(raf);
-  //   };
-
-  //   requestAnimationFrame(raf);
-  // });
 
   return (
     <>

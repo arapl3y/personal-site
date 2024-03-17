@@ -27,7 +27,7 @@ module.exports = {
     },
     fontFamily: {
       body: ['"Open Sans"', "-apple-system", "sans-serif"],
-      display: ["venice-blvd", "-apple-system", "sans-serif"],
+      display: ["IBM Plex Sans", "-apple-system", "sans-serif"],
       mono: ["IBM Plex Mono"],
     },
   },

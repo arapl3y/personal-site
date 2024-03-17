@@ -58,7 +58,7 @@ const ProjectSection = ({
         </ul>
 
         <h2 className="text-2xl sm:text-3xl uppercase">{project.client}</h2>
-        <h1 className="text-3xl sm:text-4xl font-bold uppercase">
+        <h1 className="text-3xl sm:text-4xl font-bold uppercase italic">
           {project.name}
         </h1>
 

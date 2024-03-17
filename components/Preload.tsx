@@ -38,9 +38,9 @@ export default function Preload() {
           <motion.h1
             {...anim(loaderVariants)}
             animate={loaderControls}
-            className="text-off-black dark:text-off-white relative z-10 px-4 text-7xl font-bold uppercase"
+            className="text-off-black dark:text-off-white relative z-10 px-4 text-7xl font-bold uppercase italic"
           >
-            AR
+            AR.
           </motion.h1>
         </div>
       </div>

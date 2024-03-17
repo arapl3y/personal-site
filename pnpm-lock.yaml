@@ -17,9 +17,6 @@ dependencies:
   '@sanity/webhook':
     specifier: ^4.0.1
     version: 4.0.1
-  '@studio-freight/lenis':
-    specifier: ^1.0.34
-    version: 1.0.34
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.4.1)
@@ -1635,10 +1632,6 @@ packages:
   /@sanity/webhook@4.0.1:
     resolution: {integrity: sha512-hswDXWD6Ru2qz0oMlEOathKspEyoc/jNFgAGvQVWQ4sbQDjVveMkLimQO+4FNWwi1AMYdcEmj+XmCzrPKIuvWA==}
     engines: {node: '>=20.0.0'}
-    dev: false
-
-  /@studio-freight/lenis@1.0.34:
-    resolution: {integrity: sha512-sEyzEjfAsTlFgDebMYT5G7tlB0ZHhWkHEoJj0g7W0YYZO093Mh4MU65o1qbNKwRacspdU04ZrA+5Wxwt4dsS7Q==}
     dev: false
 
   /@swc/helpers@0.5.2:
