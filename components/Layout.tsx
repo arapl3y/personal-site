@@ -4,6 +4,8 @@ import { useBoundStore } from "@/store";
 import Preload from "@/components/Preload";
 
 export default function Layout({ children }: { children: ReactNode }) {
+  // TODO: Update this to use Framer Motion's animate method
+
   // Animation controls
   const loaderControls = useAnimation();
   const containerControls = useAnimation();
