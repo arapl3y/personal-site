@@ -9,11 +9,14 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 function App({ Component, pageProps, router }: AppProps) {
+  const isAdminDashboard = router.pathname.includes("admin");
+
   return (
     <>
       <ThemeProvider attribute="class" defaultTheme="dark">
         <Layout>
-          <Nav />
+          {!isAdminDashboard && <Nav />}
+
           <AnimatePresence
             mode="wait"
             onExitComplete={() => {
@@ -24,7 +27,8 @@ function App({ Component, pageProps, router }: AppProps) {
           >
             <Component {...pageProps} key={router.asPath} />
           </AnimatePresence>
-          <Footer />
+
+          {!isAdminDashboard && <Footer />}
         </Layout>
       </ThemeProvider>
 
