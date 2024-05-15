@@ -19,15 +19,15 @@ const links = [
 ];
 
 export default function Nav() {
-  const [selected, setSelected] = useState<string>();
+  const [selected, setSelected] = useState<string>("work");
   const router = useRouter();
   const navControls = useBoundStore((state) => state.navControls);
 
   useEffect(() => {
-    if (router.pathname === "/") {
-      setSelected("work");
-    } else if (router.pathname === "/contact") {
+    if (router.pathname === "/contact") {
       setSelected("contact");
+    } else {
+      setSelected("work");
     }
   }, [router.pathname]);
 

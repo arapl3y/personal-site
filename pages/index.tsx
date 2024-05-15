@@ -1,5 +1,3 @@
-import Head from "next/head";
-import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import SelectWork from "@/components/SelectWork";
@@ -16,6 +14,8 @@ import { getTalks } from "@/sanity/talk";
 import { Talk } from "@/types/talk";
 import Contact from "@/components/Contact";
 import Meta from "@/components/Meta";
+
+import type { NextPage } from "next";
 
 const Home: NextPage<{
   awards: Award[];

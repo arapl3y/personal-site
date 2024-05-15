@@ -7,13 +7,17 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { checkAdminDashboardRoute } from "@/utils/admin";
 
 function App({ Component, pageProps, router }: AppProps) {
+  const isAdminRoute = checkAdminDashboardRoute(router);
+
   return (
     <>
       <ThemeProvider attribute="class" defaultTheme="dark">
         <Layout>
-          <Nav />
+          {!isAdminRoute && <Nav />}
+
           <AnimatePresence
             mode="wait"
             onExitComplete={() => {
@@ -24,7 +28,8 @@ function App({ Component, pageProps, router }: AppProps) {
           >
             <Component {...pageProps} key={router.asPath} />
           </AnimatePresence>
-          <Footer />
+
+          {!isAdminRoute && <Footer />}
         </Layout>
       </ThemeProvider>
 

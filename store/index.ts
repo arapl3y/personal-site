@@ -1,5 +1,4 @@
 import { create } from "zustand";
-
 import { AnimationControls } from "framer-motion";
 import { StateCreator } from "zustand";
 

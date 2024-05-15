@@ -6,7 +6,6 @@ import { PortableText } from "@portabletext/react";
 import Chip from "@/components/Chip";
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head";
 import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";

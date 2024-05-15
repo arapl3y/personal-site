@@ -1,7 +1,6 @@
 import MotionImage from "./MotionImage";
 import MotionLink from "./MotionLink";
 import Image from "next/image";
-import Link from "next/link";
 import Chip from "./Chip";
 import { Project } from "@/types/project";
 import { urlFor } from "@/sanity/client";

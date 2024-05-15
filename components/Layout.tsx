@@ -2,8 +2,15 @@ import { ReactNode, useEffect } from "react";
 import { useAnimation } from "framer-motion";
 import { useBoundStore } from "@/store";
 import Preload from "@/components/Preload";
+import { useRouter } from "next/router";
+import { checkAdminDashboardRoute } from "@/utils/admin";
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const router = useRouter();
+  const isAdminRoute = checkAdminDashboardRoute(router);
+
+  // TODO: Update this to use Framer Motion's animate method
+
   // Animation controls
   const loaderControls = useAnimation();
   const containerControls = useAnimation();
@@ -65,7 +72,8 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Preload />
+      {/* Don't want to show preload animation if editing in the CMS */}
+      {!isAdminRoute && <Preload />}
 
       <div className="flex flex-col h-full">{children}</div>
     </>

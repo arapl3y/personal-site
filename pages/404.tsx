@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { anim, contentVariants } from "@/utils/animation";
 import { useBoundStore } from "@/store";
-import Head from "next/head";
 import Meta from "@/components/Meta";
 
 const Custom404 = () => {
