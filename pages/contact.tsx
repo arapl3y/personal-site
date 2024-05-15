@@ -35,7 +35,7 @@ const Contact = () => {
               rotate: 0,
               transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1] },
             }}
-            className="my-4 relative aspect-[9/12] w-full h-full"
+            className="mt-6 mb-4 relative w-[11rem] h-[15rem] sm:w-[15rem] sm:h-[20rem]"
           >
             <Image
               src={AlexImage}
