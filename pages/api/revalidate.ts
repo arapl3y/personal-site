@@ -5,16 +5,14 @@ const REVALIDATION_TOKEN = process.env.REVALIDATION_TOKEN ?? "";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const signature = req.headers[SIGNATURE_HEADER_NAME] as string;
   const isValid = await isValidSignature(
     JSON.stringify(req.body),
     signature,
-    REVALIDATION_TOKEN,
+    REVALIDATION_TOKEN
   );
-
-  console.log(`==== is the webhook request valid? ${isValid}`);
 
   if (!isValid) {
     res.status(401).json({ success: false, message: "Invalid signature" });
@@ -22,12 +20,11 @@ export default async function handler(
   }
 
   try {
-    // Only revalidate root route for now
-    const pathToRevalidate = "/";
+    const paths = [`projects/${req.body.slug.current}`, "/"];
 
-    console.log(`===== Revalidating: ${pathToRevalidate}`);
-
-    await res.revalidate(pathToRevalidate);
+    for (const path of paths) {
+      await res.revalidate(path);
+    }
 
     return res.json({ revalidated: true });
   } catch (err) {
